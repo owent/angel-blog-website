@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>转载 on ANGEL</title>
+    <link>//angel.owent.net/categories/%E8%BD%AC%E8%BD%BD.html</link>
+    <description>Recent content in 转载 on ANGEL</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <managingEditor>angelg0426@hotmail.com (Angel)</managingEditor>
+    <webMaster>angelg0426@hotmail.com (Angel)</webMaster>
+    <lastBuildDate>Fri, 13 Feb 2015 07:41:24 +0000</lastBuildDate>
+    
+	<atom:link href="//angel.owent.net/categories/%E8%BD%AC%E8%BD%BD/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Top Twelve Tips for Running a Beta Test</title>
+      <link>//angel.owent.net/2015/02/top-twelve-tips-for-running-a-beta-test/</link>
+      <pubDate>Fri, 13 Feb 2015 07:41:24 +0000</pubDate>
+      <author>angelg0426@hotmail.com (Angel)</author>
+      <guid>//angel.owent.net/2015/02/top-twelve-tips-for-running-a-beta-test/</guid>
+      <description>by Joel Spolsky Tuesday, March 02, 2004 _source:_http://www.joelonsoftware.com/articles/BetaTest.html &amp;nbsp; &amp;nbsp; Here are a few tips for running a beta test of a software product intended for large audiences &amp;#8212; what I call &amp;ldquo;shrinkwrap&amp;rdquo;. These apply for commercial or open source projects; I don&amp;rsquo;t care whether you get paid in cash, eyeballs, or peer recognition, but I&amp;rsquo;m focused on products for lots of users, not internal IT projects. Open betas don&amp;rsquo;t</description>
+    </item>
+    
+    <item>
+      <title>关于python文件操作</title>
+      <link>//angel.owent.net/2015/02/%E5%85%B3%E4%BA%8Epython%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Wed, 11 Feb 2015 07:18:30 +0000</pubDate>
+      <author>angelg0426@hotmail.com (Angel)</author>
+      <guid>//angel.owent.net/2015/02/%E5%85%B3%E4%BA%8Epython%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</guid>
+      <description>原文链接：http://www.cnblogs.com/rollenholt/archive/2012/04/23/2466179.html</description>
+    </item>
+    
+    <item>
+      <title>66个高质量的Java开发博客</title>
+      <link>//angel.owent.net/2014/04/66%E4%B8%AA%E9%AB%98%E8%B4%A8%E9%87%8F%E7%9A%84java%E5%BC%80%E5%8F%91%E5%8D%9A%E5%AE%A2/</link>
+      <pubDate>Fri, 11 Apr 2014 06:10:21 +0000</pubDate>
+      <author>angelg0426@hotmail.com (Angel)</author>
+      <guid>//angel.owent.net/2014/04/66%E4%B8%AA%E9%AB%98%E8%B4%A8%E9%87%8F%E7%9A%84java%E5%BC%80%E5%8F%91%E5%8D%9A%E5%AE%A2/</guid>
+      <description>原文链接：http://www.programcreek.com/2012/11/top-100-java-developers-blogs</description>
+    </item>
+    
+    <item>
+      <title>值得学习的Android资源命名规范</title>
+      <link>//angel.owent.net/2014/03/%E5%80%BC%E5%BE%97%E5%AD%A6%E4%B9%A0%E7%9A%84android%E8%B5%84%E6%BA%90%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/</link>
+      <pubDate>Wed, 05 Mar 2014 08:37:57 +0000</pubDate>
+      <author>angelg0426@hotmail.com (Angel)</author>
+      <guid>//angel.owent.net/2014/03/%E5%80%BC%E5%BE%97%E5%AD%A6%E4%B9%A0%E7%9A%84android%E8%B5%84%E6%BA%90%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/</guid>
+      <description>原文链接：http://mikewang.blog.51cto.com/3826268/1020693 Android资源命名规范 最近几个月，</description>
+    </item>
+    
+    <item>
+      <title>7种形式的Android Dialog使用举例</title>
+      <link>//angel.owent.net/2014/03/7%E7%A7%8D%E5%BD%A2%E5%BC%8F%E7%9A%84android-dialog%E4%BD%BF%E7%94%A8%E4%B8%BE%E4%BE%8B/</link>
+      <pubDate>Wed, 05 Mar 2014 08:36:03 +0000</pubDate>
+      <author>angelg0426@hotmail.com (Angel)</author>
+      <guid>//angel.owent.net/2014/03/7%E7%A7%8D%E5%BD%A2%E5%BC%8F%E7%9A%84android-dialog%E4%BD%BF%E7%94%A8%E4%B8%BE%E4%BE%8B/</guid>
+      <description>原文链接:http://www.oschina.net/question/54100_32486#answers 在Android开发中，我们</description>
+    </item>
+    
+  </channel>
+</rss>

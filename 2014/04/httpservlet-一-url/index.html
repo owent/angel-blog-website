@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  
+  
+  <meta charset="utf-8" />
+  <title>Http/Servlet (一)-URL|ANGEL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="canonical" href="//angel.owent.net/2014/04/httpservlet-%E4%B8%80-url/">
+  <link href="//angel.owent.net/index.xml" rel="alternate" type="application/rss+xml" title="ANGEL" />
+  
+  <link rel="icon" href='../../../favicon.ico' />
+  
+  
+  <link rel="stylesheet" href='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css' crossorigin="anonymous" />
+  
+  <link rel="stylesheet" href='//angel.owent.net/css/style.css' />
+
+  
+  <script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js' crossorigin="anonymous"></script>
+  
+  
+  
+</head>
+<body><div id="container"><div id="wrap">
+<header id="header">
+  <div id="banner"></div>
+  <div id="header-outer">
+    <div id="header-title">
+      <h1 id="site-title">
+        <a href="//angel.owent.net" id="logo">ANGEL</a>
+      </h1>
+      
+      <h2 id="site-description">Living for the here and now</h2>
+      
+    </div>
+    <div id="header-inner">
+      <nav id="main-nav" class="navbar navbar-expand-md navbar-dark">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#main-nav-links" aria-controls="main-nav-links" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a id="main-nav-brand" class="navbar-brand collapse" href="#">#</a>
+        <div class="collapse navbar-collapse" id="main-nav-links">
+          <ul class="navbar-nav mr-auto">
+            
+              
+                <li class="nav-item"><a class="nav-link" href="../../../" title='Home'>Home</a></li>
+              
+                <li class="nav-item"><a class="nav-link" href="../../../archives.html" title='Archives'>Archives</a></li>
+              
+            
+            <li class="nav-item"><a id="nav-rss-link" class="nav-link" href="//angel.owent.net/index.xml" title='RSS订阅'>RSS订阅</a></li>
+          </ul>
+          
+          <form class="form-inline" method="get" accept-charset="UTF-8" action='//www.bing.com/search'>
+            <input type="hidden" name='q1' value='site:angel.owent.net' />
+            <input class="form-control" type="text" placeholder='搜索' name='q' />
+            <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">搜索</button>
+          </form>
+          
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+<div id="main"><section id="main-content">
+<div id="post-content"><article id="post-17d276526d9e4527c24cac8d7b6fbb46" class="article-panel article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-panel-inner article-inner">
+    <div class="article-inner">
+      <header class="article-header"><h1 itemprop="name"><a class='article-title' href="//angel.owent.net/2014/04/httpservlet-%E4%B8%80-url/" target="_blank" itemprop="url">Http/Servlet (一)-URL</a></h1></header><hr />
+      
+      <div class="article-entry" itemprop="articleBody"><p><span style="line-height: 1.6em;">&nbsp; 本文从最普遍，很陌生，交神秘，又既简单的URL说起。</span></p>
+
+<p>&nbsp;&nbsp;<strong>URI（Uniform Resource Identity）</strong>，统一资源标识符。是一种通用的资源标示符，指全世界的任何一个资源文件都有一个唯一的资源标示符。</p>
+
+<p>&nbsp; <strong>URL(Uniform Resource Locator），</strong>统一资源定位符，也被叫做<strong>网页地址</strong>。是URI的一个子集。也是HTTP应用程序处理的对象。</p>
+
+<p>&nbsp; eg：<a href="http://172.16.150.208:8080/CtripBaffleManage/index.jsp？i=1&amp;b=2" target="_blank">http://172.16.150.208:8080/CtripBaffleManage/index.jsp？i=1&amp;b=2</a></p>
+
+<p>&nbsp;&nbsp;<strong>URL的组成</strong>：</p>
+
+<p><strong><span style="color:#0000FF;">&nbsp; &nbsp;方案://服务器地址/路径</span></strong></p>
+
+<ol>
+<li>URL的第一部分<strong>Scheme</strong>，比如上例中的<span style="color:#0000FF;">http</span>，说明要使用http协议<br /></li>
+<li>URL的第二部分<strong>Host</strong>，比如上例中的<span style="font-size: 13px;"><span style="color:#0000FF;">172.16.150.208:8080</span>，是唯一的主机标识，说明了资源存放的主机地址;www.baidu.com是一个域名，经过域名服务器解析之后也是一个IP:PORT，域名的存在只是为了方便记忆。</span><br /></li>
+<li><span style="font-size: 13px;">URL的第三部分<strong>资源路径</strong>，如上例中的<span style="color:#0000FF;">/CtripBaffleManage/index.jsp</span></span><br />
+<br /></li>
+</ol>
+
+<p><span style="font-size: 13px;">&nbsp;<strong> 完整的URL组件：</strong><br /> &nbsp;&nbsp;&nbsp;<strong><span style="color:#0000FF;">方案://用户：密码@IP:Port/路径;参数?查询#片段</span></strong></span></p>
+
+<ol>
+<li><span style="font-size: 13px;"><strong>参数：</strong>key=value，作为路径的辅助信息</span><br /></li>
+<li><span style="font-size: 13px;"><strong>查询：</strong>key=value&amp;key0=value0，作为查询条件,多个查询条件用<strong>&amp;</strong>连接</span><br /></li>
+<li><span style="font-size: 13px;"><strong>片段:</strong> 用于展示的Html片段（暂时还没有搞清楚气工作原理）</span><br />
+<br /></li>
+</ol>
+
+<p><span style="font-size: 13px;">URL 可以通过HTTP之外的其他协议来访问资源，它们可以指向因特网上的任意资源，比如个人的Email账户：<br /> &nbsp; &nbsp;mailto:doris@owent.net</span></p>
+
+<p>或者其他协议，比如通过文件传输协议（FTP File Transfer Protocol）才能获取的各种文件；或者从流视频服务器上下载电影。</p>
+
+<p>&nbsp; **相对URL：</p>
+
+<p>&nbsp;**URL有两种，绝对的和相对的。绝对URL中包含了访问资源所需的全部信息。</p>
+
+<p>&nbsp;URL是在HTML文档中用的一种URL缩略形式。解析相对URL的第一步就是对相对URL进行转换处理。URL的转换依赖于<strong>基础URL。基础URL</strong>可以来自下面几个不同的地方。</p>
+
+<ul>
+<li><strong>在资源中显示提供。</strong>HTML文档中包含一个<BASE></BASE>。<br /></li>
+<li><strong>封装资源的基础URL。</strong>在一个显示指定URL的资源中发现一个相对路径的URL，将所述资源的URL作为基础。<br /></li>
+<li><strong>没有基础URL。</strong>损坏了的，没法访问的URL<br />
+<br /></li>
+</ul>
+
+<p>转换相对URL的方式，已经由浏览器这样的HTTP工具实现了，就不做详细介绍。如果是要手动实现解析方式的，请参阅《HTTP权威指南》第二章内容</p>
+
+<p>&nbsp; &nbsp;</p>
+
+<p>&nbsp; URL就介绍到这里。</p>
+</div>
+      <hr />
+      <footer class="article-footer">
+        <div class="article-panel-footer article-meta article-footer">
+          <span class="article-meta-left">
+  <ol>
+    
+    <li><a href='//angel.owent.net/categories/web/http.html'>Web/HTTP</a></li>
+    
+    <li><a href='//angel.owent.net/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91.html'>编程开发</a></li>
+    
+    <li><a href='//angel.owent.net/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0.html'>读书笔记</a></li>
+    
+  </ol>
+</span>
+          <span class="article-meta-right"><time datetime='2014-04-14T07:16:53.000&#43;00:00' itemprop="datePublished">2014-04-14</time></span>
+          <span class="clearfix"></span>
+        </div>
+        
+        
+      </footer>
+    </div>
+    
+<hr />
+<nav id="article-nav">
+  <ul class="pagination">
+  
+    <li class="page-item">
+      <a class="page-link" id="article-nav-newer" class="article-nav-link-wrap" href='//angel.owent.net/2014/04/httpservlet-%E4%BA%8C-http%E5%87%BD%E6%95%B0%E5%8F%8Ahttpservlet%E5%AE%9E%E7%8E%B0/'>
+        上一篇<strong>Http/Servlet (二)-HTTP函数及HttpServlet实现</strong>
+      </a>
+    </li>
+  
+  
+    <li class="page-item">
+      <a class="page-link" id="article-nav-older" class="article-nav-link-wrap" href='//angel.owent.net/2014/04/66%E4%B8%AA%E9%AB%98%E8%B4%A8%E9%87%8F%E7%9A%84java%E5%BC%80%E5%8F%91%E5%8D%9A%E5%AE%A2/'>
+        下一篇<strong>66个高质量的Java开发博客</strong>
+      </a>
+    </li>
+  
+  </ul>
+</nav>
+
+    
+<hr />
+<section id="comments">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+var disqus_config = function () {
+
+this.page.identifier = '201413';
+
+};
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://angel-13.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+  </div>
+</article></div>
+</section></div>
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      <strong id="footer-left">
+        &copy; 2018
+        ANGEL
+        
+        
+      </strong>
+      <strong id="footer-right">
+        
+        
+        发布者 <a href="https://gohugo.io/" target="_blank">Hugo</a>,
+        主题 <a href="https://github.com/owt5008137/hugo-theme-distinctionpp" target="_blank">distinctionpp</a>
+      </strong>
+      <span class="clearfix"></span>
+    </div>
+  </div>
+</footer>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js' crossorigin="anonymous"></script>
+  
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.min.js' crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js'></script>
+
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/capnproto.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/cmake.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/d.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/dos.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/erlang.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/less.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/lua.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/php.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/powershell.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/protobuf.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/profile.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/typescript.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/vim.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/rust.min.js'></script>
+<script type="text/javascript">
+jQuery(function (){
+    jQuery("head").append('<link rel="stylesheet" href="\/\/cdnjs.cloudflare.com\/ajax\/libs\/highlight.js\/9.12.0\/styles\/vs2015.min.css" />');
+    if (window.JSON) {
+        hljs.configure(JSON.parse("{\"languages\":{},\"tabreplace\":\"    \",\"usebr\":false}"));
+    } else {
+        hljs.configure(evel("{\"languages\":{},\"tabreplace\":\"    \",\"usebr\":false}"));
+    }
+    jQuery('pre\x3ecode').each(function(i, block) {
+        try {
+            hljs.highlightBlock(block);
+        } catch (e) {
+            if (window.console) {
+                console.log(e.toString() + "\r\nMaybe can not detect the language");
+            }
+        }
+    });
+});
+</script>
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-19298704-3"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-19298704-3');
+</script>
+
+
+
+
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js'></script>
+<script type="text/javascript">
+jQuery(function(){
+    jQuery("head").append('<link rel="stylesheet" href="\/\/cdnjs.cloudflare.com\/ajax\/libs\/KaTeX\/0.9.0\/katex.min.css" />');
+    renderMathInElement(document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "\\[", right: "\\]", display: true},
+            {left: "\\(", right: "\\)", display: false},
+            {left: "`$", right: "$`", display: false}
+        ],
+        ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    });
+});
+</script>
+
+
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js'></script>
+
+
+</div>
+</body></html>

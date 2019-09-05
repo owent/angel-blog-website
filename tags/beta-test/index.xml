@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>beta test on ANGEL</title>
+    <link>//angel.owent.net/tags/beta-test.html</link>
+    <description>Recent content in beta test on ANGEL</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <managingEditor>angelg0426@hotmail.com (Angel)</managingEditor>
+    <webMaster>angelg0426@hotmail.com (Angel)</webMaster>
+    <lastBuildDate>Fri, 13 Feb 2015 07:41:24 +0000</lastBuildDate>
+    
+	<atom:link href="//angel.owent.net/tags/beta-test/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Top Twelve Tips for Running a Beta Test</title>
+      <link>//angel.owent.net/2015/02/top-twelve-tips-for-running-a-beta-test/</link>
+      <pubDate>Fri, 13 Feb 2015 07:41:24 +0000</pubDate>
+      <author>angelg0426@hotmail.com (Angel)</author>
+      <guid>//angel.owent.net/2015/02/top-twelve-tips-for-running-a-beta-test/</guid>
+      <description>by Joel Spolsky Tuesday, March 02, 2004 _source:_http://www.joelonsoftware.com/articles/BetaTest.html &amp;nbsp; &amp;nbsp; Here are a few tips for running a beta test of a software product intended for large audiences &amp;#8212; what I call &amp;ldquo;shrinkwrap&amp;rdquo;. These apply for commercial or open source projects; I don&amp;rsquo;t care whether you get paid in cash, eyeballs, or peer recognition, but I&amp;rsquo;m focused on products for lots of users, not internal IT projects. Open betas don&amp;rsquo;t</description>
+    </item>
+    
+  </channel>
+</rss>

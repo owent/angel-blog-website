@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mac on ANGEL</title>
+    <link>//angel.owent.net/tags/mac.html</link>
+    <description>Recent content in Mac on ANGEL</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <managingEditor>angelg0426@hotmail.com (Angel)</managingEditor>
+    <webMaster>angelg0426@hotmail.com (Angel)</webMaster>
+    <lastBuildDate>Mon, 02 Jun 2014 04:13:41 +0000</lastBuildDate>
+    
+	<atom:link href="//angel.owent.net/tags/mac/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Mac常用快捷标示符</title>
+      <link>//angel.owent.net/2014/06/mac%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E6%A0%87%E7%A4%BA%E7%AC%A6/</link>
+      <pubDate>Mon, 02 Jun 2014 04:13:41 +0000</pubDate>
+      <author>angelg0426@hotmail.com (Angel)</author>
+      <guid>//angel.owent.net/2014/06/mac%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E6%A0%87%E7%A4%BA%E7%AC%A6/</guid>
+      <description>&amp;nbsp;：&amp;nbsp;Esc &amp;nbsp;：shift &amp;nbsp;：Ctrl &amp;nbsp;：功能键，即苹果键 &amp;nbsp;：Alt ：回车 其中一</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>BLOG on ANGEL</title>
+    <link>//angel.owent.net/tags/blog.html</link>
+    <description>Recent content in BLOG on ANGEL</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <managingEditor>angelg0426@hotmail.com (Angel)</managingEditor>
+    <webMaster>angelg0426@hotmail.com (Angel)</webMaster>
+    <lastBuildDate>Fri, 11 Apr 2014 06:10:21 +0000</lastBuildDate>
+    
+	<atom:link href="//angel.owent.net/tags/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>66个高质量的Java开发博客</title>
+      <link>//angel.owent.net/2014/04/66%E4%B8%AA%E9%AB%98%E8%B4%A8%E9%87%8F%E7%9A%84java%E5%BC%80%E5%8F%91%E5%8D%9A%E5%AE%A2/</link>
+      <pubDate>Fri, 11 Apr 2014 06:10:21 +0000</pubDate>
+      <author>angelg0426@hotmail.com (Angel)</author>
+      <guid>//angel.owent.net/2014/04/66%E4%B8%AA%E9%AB%98%E8%B4%A8%E9%87%8F%E7%9A%84java%E5%BC%80%E5%8F%91%E5%8D%9A%E5%AE%A2/</guid>
+      <description>原文链接：http://www.programcreek.com/2012/11/top-100-java-developers-blogs</description>
+    </item>
+    
+  </channel>
+</rss>

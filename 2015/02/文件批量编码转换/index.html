@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  
+  
+  <meta charset="utf-8" />
+  <title>文件批量编码转换|ANGEL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="canonical" href="//angel.owent.net/2015/02/%E6%96%87%E4%BB%B6%E6%89%B9%E9%87%8F%E7%BC%96%E7%A0%81%E8%BD%AC%E6%8D%A2/">
+  <link href="//angel.owent.net/index.xml" rel="alternate" type="application/rss+xml" title="ANGEL" />
+  
+  <link rel="icon" href='../../../favicon.ico' />
+  
+  
+  <link rel="stylesheet" href='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css' crossorigin="anonymous" />
+  
+  <link rel="stylesheet" href='//angel.owent.net/css/style.css' />
+
+  
+  <script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js' crossorigin="anonymous"></script>
+  
+  
+  
+</head>
+<body><div id="container"><div id="wrap">
+<header id="header">
+  <div id="banner"></div>
+  <div id="header-outer">
+    <div id="header-title">
+      <h1 id="site-title">
+        <a href="//angel.owent.net" id="logo">ANGEL</a>
+      </h1>
+      
+      <h2 id="site-description">Living for the here and now</h2>
+      
+    </div>
+    <div id="header-inner">
+      <nav id="main-nav" class="navbar navbar-expand-md navbar-dark">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#main-nav-links" aria-controls="main-nav-links" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a id="main-nav-brand" class="navbar-brand collapse" href="#">#</a>
+        <div class="collapse navbar-collapse" id="main-nav-links">
+          <ul class="navbar-nav mr-auto">
+            
+              
+                <li class="nav-item"><a class="nav-link" href="../../../" title='Home'>Home</a></li>
+              
+                <li class="nav-item"><a class="nav-link" href="../../../archives.html" title='Archives'>Archives</a></li>
+              
+            
+            <li class="nav-item"><a id="nav-rss-link" class="nav-link" href="//angel.owent.net/index.xml" title='RSS订阅'>RSS订阅</a></li>
+          </ul>
+          
+          <form class="form-inline" method="get" accept-charset="UTF-8" action='//www.bing.com/search'>
+            <input type="hidden" name='q1' value='site:angel.owent.net' />
+            <input class="form-control" type="text" placeholder='搜索' name='q' />
+            <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">搜索</button>
+          </form>
+          
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+<div id="main"><section id="main-content">
+<div id="post-content"><article id="post-76ddc7b9b35ccaca7ecedfa49c926bf4" class="article-panel article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-panel-inner article-inner">
+    <div class="article-inner">
+      <header class="article-header"><h1 itemprop="name"><a class='article-title' href="//angel.owent.net/2015/02/%E6%96%87%E4%BB%B6%E6%89%B9%E9%87%8F%E7%BC%96%E7%A0%81%E8%BD%AC%E6%8D%A2/" target="_blank" itemprop="url">文件批量编码转换</a></h1></header><hr />
+      
+      <div class="article-entry" itemprop="articleBody"><pre style="background-color:#2b2b2b;color:#a9b7c6;font-family:'Menlo';font-size:12pt;"><span style="background-color:#40332b;">__author__</span> = <span style="color:#008080;">&#39;lfGong&#39;
+</span>
+<span style="color:#cc7832;font-weight:bold;">import </span>os
+
+target_dir = <span style="color:#008080;">"/Users/lfGong/Desktop/Workspace/ServiceBeanGenerator"
+</span>
+<span style="color:#808080;"># target_dir = "/Users/lfGong/Desktop/src副本"
+</span>
+<span style="color:#808080;">#调用enca指令做编码转换
+</span><span style="color:#cc7832;font-weight:bold;">def </span><span style="font-weight:bold;">convert_utf8</span>(file_name):
+    <span style="color:#808080;">#此处的utf-8修改为enca支持的目标编码即可
+</span><span style="color:#808080;">    </span>cmd = <span style="color:#008080;">"enca -x utf-8 " </span>+ file_name
+    <span style="color:#8888c6;">print</span>(cmd)
+    os.system(cmd)
+
+<span style="color:#808080;">#递归遍历文件夹
+</span><span style="color:#cc7832;font-weight:bold;">def </span><span style="font-weight:bold;">iterate_dir</span>(target_path):
+    child_dirs = os.listdir(target_path)
+    <span style="color:#cc7832;font-weight:bold;">for </span>file_name <span style="color:#cc7832;font-weight:bold;">in </span>child_dirs:
+        <span style="color:#cc7832;font-weight:bold;">if </span>file_name.startswith(<span style="color:#008080;">"."</span>):
+            <span style="color:#cc7832;font-weight:bold;">continue
+</span><span style="color:#cc7832;font-weight:bold;">        </span>temp_file_name = target_path + <span style="color:#008080;">"/" </span>+ file_name
+        <span style="color:#cc7832;font-weight:bold;">if </span>os.path.isdir(temp_file_name):
+            <span style="color:#8888c6;">print</span>(temp_file_name)
+            iterate_dir(temp_file_name)
+        <span style="color:#cc7832;font-weight:bold;">else</span>:
+            convert_utf8(temp_file_name)
+
+<span style="color:#cc7832;font-weight:bold;">def </span><span style="font-weight:bold;">__main</span>():
+    iterate_dir(target_dir)
+
+__main()</pre>
+</div>
+      <hr />
+      <footer class="article-footer">
+        <div class="article-panel-footer article-meta article-footer">
+          <span class="article-meta-left">
+  <ol>
+    
+    <li><a href='//angel.owent.net/categories/%E4%B8%AA%E4%BA%BA%E5%8E%9F%E5%88%9B.html'>个人原创</a></li>
+    
+    <li><a href='//angel.owent.net/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91.html'>编程开发</a></li>
+    
+  </ol>
+</span>
+          <span class="article-meta-right"><time datetime='2015-02-11T07:11:04.000&#43;00:00' itemprop="datePublished">2015-02-11</time></span>
+          <span class="clearfix"></span>
+        </div>
+        
+        
+<div class="article-tags">
+  <ul class="article-tag-list">
+    
+    <li class="article-tag-list-item"><a href='//angel.owent.net/tags/python.html'>Python</a></li>
+    
+  </ul>
+</div>
+
+      </footer>
+    </div>
+    
+<hr />
+<nav id="article-nav">
+  <ul class="pagination">
+  
+    <li class="page-item">
+      <a class="page-link" id="article-nav-newer" class="article-nav-link-wrap" href='//angel.owent.net/2015/02/%E5%85%B3%E4%BA%8Epython%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/'>
+        上一篇<strong>关于python文件操作</strong>
+      </a>
+    </li>
+  
+  
+    <li class="page-item">
+      <a class="page-link" id="article-nav-older" class="article-nav-link-wrap" href='//angel.owent.net/2014/09/android%E5%8A%A8%E7%94%BB/'>
+        下一篇<strong>Android动画</strong>
+      </a>
+    </li>
+  
+  </ul>
+</nav>
+
+    
+<hr />
+<section id="comments">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+var disqus_config = function () {
+
+this.page.identifier = '201502';
+
+};
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://angel-13.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+  </div>
+</article></div>
+</section></div>
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      <strong id="footer-left">
+        &copy; 2018
+        ANGEL
+        
+        
+      </strong>
+      <strong id="footer-right">
+        
+        
+        发布者 <a href="https://gohugo.io/" target="_blank">Hugo</a>,
+        主题 <a href="https://github.com/owt5008137/hugo-theme-distinctionpp" target="_blank">distinctionpp</a>
+      </strong>
+      <span class="clearfix"></span>
+    </div>
+  </div>
+</footer>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js' crossorigin="anonymous"></script>
+  
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.min.js' crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js'></script>
+
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/capnproto.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/cmake.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/d.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/dos.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/erlang.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/less.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/lua.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/php.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/powershell.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/protobuf.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/profile.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/typescript.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/vim.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/rust.min.js'></script>
+<script type="text/javascript">
+jQuery(function (){
+    jQuery("head").append('<link rel="stylesheet" href="\/\/cdnjs.cloudflare.com\/ajax\/libs\/highlight.js\/9.12.0\/styles\/vs2015.min.css" />');
+    if (window.JSON) {
+        hljs.configure(JSON.parse("{\"languages\":{},\"tabreplace\":\"    \",\"usebr\":false}"));
+    } else {
+        hljs.configure(evel("{\"languages\":{},\"tabreplace\":\"    \",\"usebr\":false}"));
+    }
+    jQuery('pre\x3ecode').each(function(i, block) {
+        try {
+            hljs.highlightBlock(block);
+        } catch (e) {
+            if (window.console) {
+                console.log(e.toString() + "\r\nMaybe can not detect the language");
+            }
+        }
+    });
+});
+</script>
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-19298704-3"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-19298704-3');
+</script>
+
+
+
+
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js'></script>
+<script type="text/javascript">
+jQuery(function(){
+    jQuery("head").append('<link rel="stylesheet" href="\/\/cdnjs.cloudflare.com\/ajax\/libs\/KaTeX\/0.9.0\/katex.min.css" />');
+    renderMathInElement(document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "\\[", right: "\\]", display: true},
+            {left: "\\(", right: "\\)", display: false},
+            {left: "`$", right: "$`", display: false}
+        ],
+        ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    });
+});
+</script>
+
+
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js'></script>
+
+
+</div>
+</body></html>

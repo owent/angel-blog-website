@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on ANGEL</title>
+    <link>//angel.owent.net/tags/python.html</link>
+    <description>Recent content in Python on ANGEL</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <managingEditor>angelg0426@hotmail.com (Angel)</managingEditor>
+    <webMaster>angelg0426@hotmail.com (Angel)</webMaster>
+    <lastBuildDate>Wed, 11 Feb 2015 07:18:30 +0000</lastBuildDate>
+    
+	<atom:link href="//angel.owent.net/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>关于python文件操作</title>
+      <link>//angel.owent.net/2015/02/%E5%85%B3%E4%BA%8Epython%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Wed, 11 Feb 2015 07:18:30 +0000</pubDate>
+      <author>angelg0426@hotmail.com (Angel)</author>
+      <guid>//angel.owent.net/2015/02/%E5%85%B3%E4%BA%8Epython%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</guid>
+      <description>原文链接：http://www.cnblogs.com/rollenholt/archive/2012/04/23/2466179.html</description>
+    </item>
+    
+    <item>
+      <title>文件批量编码转换</title>
+      <link>//angel.owent.net/2015/02/%E6%96%87%E4%BB%B6%E6%89%B9%E9%87%8F%E7%BC%96%E7%A0%81%E8%BD%AC%E6%8D%A2/</link>
+      <pubDate>Wed, 11 Feb 2015 07:11:04 +0000</pubDate>
+      <author>angelg0426@hotmail.com (Angel)</author>
+      <guid>//angel.owent.net/2015/02/%E6%96%87%E4%BB%B6%E6%89%B9%E9%87%8F%E7%BC%96%E7%A0%81%E8%BD%AC%E6%8D%A2/</guid>
+      <description>__author__ = &amp;#39;lfGong&amp;#39; import os target_dir = &#34;/Users/lfGong/Desktop/Workspace/ServiceBeanGenerator&#34; # target_dir = &#34;/Users/lfGong/Desktop/src副本&#34; #调用enca指令做编码转换 def convert_utf8(file_name): #此处的utf-8修改为en</description>
+    </item>
+    
+    <item>
+      <title>Python语法总结</title>
+      <link>//angel.owent.net/2014/06/python%E8%AF%AD%E6%B3%95%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Mon, 30 Jun 2014 10:15:04 +0000</pubDate>
+      <author>angelg0426@hotmail.com (Angel)</author>
+      <guid>//angel.owent.net/2014/06/python%E8%AF%AD%E6%B3%95%E6%80%BB%E7%BB%93/</guid>
+      <description>#hello world print(&#34;Hello world!&#34;) #基本数据类型 x = int(&#34;32&#34;) print(x) print(type(x)) print(type(&#34;Hello world!&#34;)) arr = &#34;doris&#34;, &#34;angel&#34; print(len(arr)) arr = &#34;teapot&#34;, print(len(arr)) arr = [&#34;angel&#34;, &#34;foo&#34;, &#34;teapot&#34;, 45, 33] print(type(arr), arr[1], type(arr[1]), type(arr[3])) print(len(&#34;automatically&#34;)) arr.append(&#34;doris&#34;) print(arr) a = None print(a is None) # while True: # i = input(&#34;Input a number:&#34;) # try: # i = int(i) # if i == 0: # break #</description>
+    </item>
+    
+  </channel>
+</rss>

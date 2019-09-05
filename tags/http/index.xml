@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>HTTP on ANGEL</title>
+    <link>//angel.owent.net/tags/http.html</link>
+    <description>Recent content in HTTP on ANGEL</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <managingEditor>angelg0426@hotmail.com (Angel)</managingEditor>
+    <webMaster>angelg0426@hotmail.com (Angel)</webMaster>
+    <lastBuildDate>Mon, 05 May 2014 05:23:28 +0000</lastBuildDate>
+    
+	<atom:link href="//angel.owent.net/tags/http/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>用PAC脚本配置代理</title>
+      <link>//angel.owent.net/2014/05/%E7%94%A8pac%E8%84%9A%E6%9C%AC%E9%85%8D%E7%BD%AE%E4%BB%A3%E7%90%86/</link>
+      <pubDate>Mon, 05 May 2014 05:23:28 +0000</pubDate>
+      <author>angelg0426@hotmail.com (Angel)</author>
+      <guid>//angel.owent.net/2014/05/%E7%94%A8pac%E8%84%9A%E6%9C%AC%E9%85%8D%E7%BD%AE%E4%BB%A3%E7%90%86/</guid>
+      <description>手动配置代理 手动配置代理只能为所有内容制定唯一的一个代理。不支持故障转移，而且在大的组织中，给管理和维护带来麻烦。需要修改代理的时候，重新为</description>
+    </item>
+    
+    <item>
+      <title>Http/Servlet (三)-一些关于TCP的概念</title>
+      <link>//angel.owent.net/2014/04/httpservlet-%E4%B8%89-%E4%B8%80%E4%BA%9B%E5%85%B3%E4%BA%8Etcp%E7%9A%84%E6%A6%82%E5%BF%B5/</link>
+      <pubDate>Fri, 18 Apr 2014 05:43:18 +0000</pubDate>
+      <author>angelg0426@hotmail.com (Angel)</author>
+      <guid>//angel.owent.net/2014/04/httpservlet-%E4%B8%89-%E4%B8%80%E4%BA%9B%E5%85%B3%E4%BA%8Etcp%E7%9A%84%E6%A6%82%E5%BF%B5/</guid>
+      <description>&amp;nbsp; &amp;nbsp;一点唠叨，感觉学习编程就像一个坑，要进这个坑的们还挺难，进来了之后更加会发现这是一个无底的坑。喜欢的人会在这掉进去的一路上看到</description>
+    </item>
+    
+  </channel>
+</rss>

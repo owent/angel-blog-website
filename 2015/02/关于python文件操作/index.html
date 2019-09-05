@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  
+  
+  <meta charset="utf-8" />
+  <title>关于python文件操作|ANGEL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="canonical" href="//angel.owent.net/2015/02/%E5%85%B3%E4%BA%8Epython%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/">
+  <link href="//angel.owent.net/index.xml" rel="alternate" type="application/rss+xml" title="ANGEL" />
+  
+  <link rel="icon" href='../../../favicon.ico' />
+  
+  
+  <link rel="stylesheet" href='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css' crossorigin="anonymous" />
+  
+  <link rel="stylesheet" href='//angel.owent.net/css/style.css' />
+
+  
+  <script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js' crossorigin="anonymous"></script>
+  
+  
+  
+</head>
+<body><div id="container"><div id="wrap">
+<header id="header">
+  <div id="banner"></div>
+  <div id="header-outer">
+    <div id="header-title">
+      <h1 id="site-title">
+        <a href="//angel.owent.net" id="logo">ANGEL</a>
+      </h1>
+      
+      <h2 id="site-description">Living for the here and now</h2>
+      
+    </div>
+    <div id="header-inner">
+      <nav id="main-nav" class="navbar navbar-expand-md navbar-dark">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#main-nav-links" aria-controls="main-nav-links" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a id="main-nav-brand" class="navbar-brand collapse" href="#">#</a>
+        <div class="collapse navbar-collapse" id="main-nav-links">
+          <ul class="navbar-nav mr-auto">
+            
+              
+                <li class="nav-item"><a class="nav-link" href="../../../" title='Home'>Home</a></li>
+              
+                <li class="nav-item"><a class="nav-link" href="../../../archives.html" title='Archives'>Archives</a></li>
+              
+            
+            <li class="nav-item"><a id="nav-rss-link" class="nav-link" href="//angel.owent.net/index.xml" title='RSS订阅'>RSS订阅</a></li>
+          </ul>
+          
+          <form class="form-inline" method="get" accept-charset="UTF-8" action='//www.bing.com/search'>
+            <input type="hidden" name='q1' value='site:angel.owent.net' />
+            <input class="form-control" type="text" placeholder='搜索' name='q' />
+            <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">搜索</button>
+          </form>
+          
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+<div id="main"><section id="main-content">
+<div id="post-content"><article id="post-50406b651bf060c62e3d345ab47ae183" class="article-panel article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-panel-inner article-inner">
+    <div class="article-inner">
+      <header class="article-header"><h1 itemprop="name"><a class='article-title' href="//angel.owent.net/2015/02/%E5%85%B3%E4%BA%8Epython%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" target="_blank" itemprop="url">关于python文件操作</a></h1></header><hr />
+      
+      <div class="article-entry" itemprop="articleBody"><p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  原文链接：http://www.cnblogs.com/rollenholt/archive/2012/04/23/2466179.html
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  总是记不住API。昨晚写的时候用到了这些，但是没记住，于是就索性整理一下吧：
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  <strong><span style="line-height: 1.8;">python中对文件、文件夹</span></strong><strong><span style="line-height: 1.8;">（文件操作函数）</span></strong><strong><span style="line-height: 1.8;">的操作需要涉及到os模块和shutil模块。</span></strong>
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  <span style="line-height: 1.8;"><span style="line-height: 1.8;">得到当前工作目录，即当前Python脚本工作的目录路径</span>:&nbsp;</span><strong><span style="line-height: 1.8;">os.getcwd()</span></strong>
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  <span style="line-height: 1.8;"><span style="line-height: 1.8;">返回指定目录下的所有文件和目录名</span>:</span><strong><span style="line-height: 1.8;">os.listdir()</span></strong>
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  <span style="line-height: 1.8;"><span style="line-height: 1.8;">函数用来删除一个文件</span>:</span><strong><span style="line-height: 1.8;">os.remove()</span></strong>
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  <span style="line-height: 1.8;">删除多个目录</span>：<strong><span style="line-height: 1.8;">os.removedirs（r&ldquo;c：\python&rdquo;）</span></strong>
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  <span style="line-height: 1.8;"><span style="line-height: 1.8;">检验给出的路径是否是一个文件</span>：</span><strong><span style="line-height: 1.8;">os.path.isfile()</span></strong>
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  <span style="line-height: 1.8;">检验给出的路径是否是一个目录：</span><strong><span style="line-height: 1.8;">os.path.isdir()</span></strong>
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  判断是否是绝对路径：<strong><span style="line-height: 1.8;">os.path.isabs()</span></strong>
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  <span style="line-height: 1.8;">检验给出的路径是否真地存:</span><strong><span style="line-height: 1.8;">os.path.</span><span style="line-height: 1.8;">exists()</span></strong>
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  <span style="line-height: 1.8;">返回一个路径的目录名和文件名:</span><strong><span style="line-height: 1.8;">os.path.split()&nbsp;&nbsp;</span></strong><span style="line-height: 1.8;">&nbsp;&nbsp; eg os.path.split('/home/swaroop/byte/code/poem.txt') 结果：('/home/swaroop/byte/code', 'poem.txt')&nbsp;</span>
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  分离扩展名：<strong><span style="line-height: 1.8;">os.path.splitext()</span></strong>
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  获取路径名：<strong><span style="line-height: 1.8;">os.path.dirname()</span></strong>
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  获取文件名：<strong><span style="line-height: 1.8;">os.path.basename()</span></strong>
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  <span style="line-height: 1.8;">运行shell命令:&nbsp;</span><strong><span style="line-height: 1.8;">os.system()</span></strong>
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  <span style="line-height: 1.8;">读取和设置环境变量:</span><strong><span style="line-height: 1.8;">os.getenv() 与os.putenv()</span></strong>
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  <span style="line-height: 1.8;">给出当前平台使用的行终止符:</span><strong><span style="line-height: 1.8;">os.linesep&nbsp;&nbsp;&nbsp;&nbsp;</span></strong><span style="line-height: 1.8;">Windows使用'\r\n'，Linux使用'\n'而Mac使用'\r'</span>
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  <span style="line-height: 1.8;">指示你正在使用的平台：</span><strong><span style="line-height: 1.8;">os.name&nbsp;</span></strong><span style="line-height: 1.8;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对于Windows，它是'nt'，而对于Linux/Unix用户，它是'posix'</span>
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  重命名：<strong><span style="line-height: 1.8;">os.rename（old， new）</span></strong>
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  创建多级目录：<strong><span style="line-height: 1.8;">os.makedirs（r&ldquo;c：\python\test&rdquo;）</span></strong>
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  创建单个目录：<strong><span style="line-height: 1.8;">os.mkdir（&ldquo;test&rdquo;）</span></strong>
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  获取文件属性：<strong><span style="line-height: 1.8;">os.stat（file）</span></strong>
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  修改文件权限与时间戳：<strong><span style="line-height: 1.8;">os.chmod（file）</span></strong>
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  终止当前进程：<strong><span style="line-height: 1.8;">os.exit（）</span></strong>
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  获取文件大小：<strong><span style="line-height: 1.8;">os.path.getsize（filename）</span></strong>
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  <br /> <strong><span style="line-height: 1.8;">文件操作：</span></strong><br /> <strong><span style="line-height: 1.8;">os.mknod("test.txt")&nbsp;</span></strong><span style="line-height: 1.8;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 创建空文件</span><br /> <strong><span style="line-height: 1.8;">fp = open("test.txt",w)&nbsp;&nbsp;</span></strong><span style="line-height: 1.8;">&nbsp;&nbsp; 直接打开一个文件，如果文件不存在则创建文件</span>
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  关于open 模式：
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  <span style="line-height: 1.8;"><span style="line-height: 1.8;">w&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以写方式打开，</span><br /> <span style="line-height: 1.8;">a&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以追加模式打开 (从 EOF 开始, 必要时创建新文件)</span><br /> <span style="line-height: 1.8;">r+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以读写模式打开</span><br /> <span style="line-height: 1.8;">w+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以读写模式打开 (参见 w )</span><br /> <span style="line-height: 1.8;">a+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以读写模式打开 (参见 a )</span><br /> <span style="line-height: 1.8;">rb&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以二进制读模式打开</span><br /> <span style="line-height: 1.8;">wb&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以二进制写模式打开 (参见 w )</span><br /> <span style="line-height: 1.8;">ab&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以二进制追加模式打开 (参见 a )</span><br /> <span style="line-height: 1.8;">rb+&nbsp;&nbsp;&nbsp;&nbsp;以二进制读写模式打开 (参见 r+ )</span><br /> <span style="line-height: 1.8;">wb+&nbsp;&nbsp;&nbsp;&nbsp;以二进制读写模式打开 (参见 w+ )</span><br /> <span style="line-height: 1.8;">ab+&nbsp;&nbsp;&nbsp;&nbsp;以二进制读写模式打开 (参见 a+ )</span></span>
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  <span style="line-height: 1.8;">&nbsp;</span>
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  <strong><span style="line-height: 1.8;">fp.read([size])&nbsp;&nbsp;</span></strong><span style="line-height: 1.8;">&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#size为读取的长度，以byte为单位
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  <strong><span style="line-height: 1.8;">fp.readline([size])&nbsp;&nbsp;</span></strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #读一行，如果定义了size，有可能返回的只是一行的一部分
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  <strong><span style="line-height: 1.8;">fp.readlines([size])&nbsp;&nbsp;&nbsp;</span></strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #把文件每一行作为一个list的一个成员，并返回这个list。其实它的内部是通过循环调用readline()来实现的。如果提供size参数，size是表示读取内容的总长，也就是说可能只读到文件的一部分。
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  <strong><span style="line-height: 1.8;">fp.write(str)&nbsp;&nbsp;</span><em><span style="line-height: 1.8;">&nbsp;</span></em></strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #把str写到文件中，write()并不会在str后加上一个换行符
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  <strong><span style="line-height: 1.8;">fp.writelines(seq)&nbsp;&nbsp;&nbsp;&nbsp;</span></strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #把seq的内容全部写到文件中(多行一次性写入)。这个函数也只是忠实地写入，不会在每行后面加上任何东西。
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  <strong><span style="line-height: 1.8;">fp.close()&nbsp;&nbsp;&nbsp;</span></strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #关闭文件。python会在一个文件不用后自动关闭文件，不过这一功能没有保证，最好还是养成自己关闭的习惯。&nbsp; 如果一个文件在关闭后还对其进行操作会产生ValueError
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  <strong><span style="line-height: 1.8;">fp.flush()&nbsp;&nbsp;&nbsp;</span></strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; #把缓冲区的内容写入硬盘
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  <strong><span style="line-height: 1.8;">fp.fileno()&nbsp;&nbsp;&nbsp;&nbsp;</span></strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #返回一个长整型的&rdquo;文件标签&ldquo;
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  <strong><span style="line-height: 1.8;">fp.isatty()&nbsp;&nbsp;&nbsp;&nbsp;</span></strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #文件是否是一个终端设备文件（unix系统中的）
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  <strong><span style="line-height: 1.8;">fp.tell()</span></strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; #返回文件操作标记的当前位置，以文件的开头为原点
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  <strong><span style="line-height: 1.8;">fp.next() &nbsp; &nbsp;</span></strong>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #返回下一行，并将文件操作标记位移到下一行。把一个file用于for &hellip; in file这样的语句时，就是调用next()函数来实现遍历的。
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  <strong><span style="line-height: 1.8;">fp.seek(offset[,whence])&nbsp;&nbsp;</span></strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #将文件打操作标记移到offset的位置。这个offset一般是相对于文件的开头来计算的，一般为正数。但如果提供了whence参数就不一定了，whence可以为0表示从头开始计算，1表示以当前位置为原点计算。2表示以文件末尾为原点进行计算。需要注意，如果文件以a或a+的模式打开，每次进行写操作时，文件操作标记会自动返回到文件末尾。
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  <strong><span style="line-height: 1.8;">fp.truncate([size])&nbsp;&nbsp;&nbsp;</span></strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #把文件裁成规定的大小，默认的是裁到当前文件操作标记的位置。如果size比文件的大小还要大，依据系统的不同可能是不改变文件，也可能是用0把文件补到相应的大小，也可能是以一些随机的内容加上去。
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  &nbsp;
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  <strong><span style="line-height: 1.8;">目录操作：</span></strong><br /> <strong><span style="line-height: 1.8;">os.mkdir("file")&nbsp;&nbsp;</span><span style="line-height: 1.8;">&nbsp;&nbsp;&nbsp;</span></strong><span style="line-height: 1.8;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 创建目录</span><br /> <span style="line-height: 1.8;">复制文件：</span><br /> <strong><span style="line-height: 1.8;">shutil.copyfile("oldfile","newfile")&nbsp;</span></strong><span style="line-height: 1.8;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; oldfile和newfile都只能是文件</span><br /> <strong><span style="line-height: 1.8;">shutil.copy("oldfile","newfile")&nbsp;&nbsp;&nbsp;</span></strong><span style="line-height: 1.8;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; oldfile只能是文件夹，newfile可以是文件，也可以是目标目录</span><br /> <span style="line-height: 1.8;">复制文件夹：</span><br /> <strong><span style="line-height: 1.8;">shutil.copytree("olddir","newdir")&nbsp;</span></strong><span style="line-height: 1.8;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; olddir和newdir都只能是目录，且newdir必须不存在</span><br /> <span style="line-height: 1.8;">重命名文件（目录）</span><br /> <strong><span style="line-height: 1.8;">os.rename("oldname","newname")&nbsp;</span></strong><span style="line-height: 1.8;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 文件或目录都是使用这条命令</span><br /> <span style="line-height: 1.8;">移动文件（目录）</span><br /> <strong><span style="line-height: 1.8;">shutil.move("oldpos","newpos") &nbsp;&nbsp;</span></strong><br /> <span style="line-height: 1.8;">删除文件</span><br /> <strong><span style="line-height: 1.8;">os.remove("file")</span></strong><br /> <span style="line-height: 1.8;">删除目录</span><br /> <strong><span style="line-height: 1.8;">os.rmdir("dir")</span></strong><span style="line-height: 1.8;">只能删除空目录</span><br /> <strong><span style="line-height: 1.8;">shutil.rmtree("dir") &nbsp;</span></strong><span style="line-height: 1.8;">&nbsp; 空目录、有内容的目录都可以删</span><br /> <span style="line-height: 1.8;">转换目录</span><br /> <strong><span style="line-height: 1.8;">os.chdir("path") &nbsp;&nbsp;</span></strong><span style="line-height: 1.8;">换路径</span>
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  &nbsp;
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  <strong>相关例子&nbsp;</strong>
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  <strong>&nbsp;1&nbsp;</strong>将文件夹下所有图片名称加上'_fc'
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  <strong><em><span style="line-height: 1.8;">python代码:</span></em></strong>
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  <span style="line-height: 1.8;"># -*- coding:utf-8 -*-</span><br /> <span style="line-height: 1.8;">import re</span><br /> <span style="line-height: 1.8;">import os</span><br /> <span style="line-height: 1.8;">import time</span><br /> <span style="line-height: 1.8;">#str.split(string)分割字符串</span><br /> <span style="line-height: 1.8;">#'连接符'.join(list) 将列表组成字符串</span><br /> <span style="line-height: 1.8;">def change_name(path):</span><br /> <span style="line-height: 1.8;">&nbsp;&nbsp;&nbsp; global i</span><br /> <span style="line-height: 1.8;">&nbsp;&nbsp;&nbsp; if not os.path.isdir(path) and not os.path.isfile(path):</span><br /> <span style="line-height: 1.8;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return False</span><br /> <span style="line-height: 1.8;">&nbsp;&nbsp;&nbsp; if os.path.isfile(path):</span><br /> <span style="line-height: 1.8;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; file_path = os.path.split(path)&nbsp;<span style="line-height: 1.8;">#分割出目录与文件</span></span><br /> <span style="line-height: 1.8;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lists = file_path[1].split('.')&nbsp;<span style="line-height: 1.8;">#分割出文件与文件扩展名</span></span><br /> <span style="line-height: 1.8;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; file_ext = lists[-1]&nbsp;<span style="line-height: 1.8;">#取出后缀名(列表切片操作)</span></span><br /> <span style="line-height: 1.8;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; img_ext = [&#8216;bmp&#8217;,&#8217;jpeg&#8217;,&#8217;gif&#8217;,&#8217;psd&#8217;,&#8217;png&#8217;,&#8217;jpg&#8217;]</span><br /> <span style="line-height: 1.8;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if file_ext in img_ext:</span><br /> <span style="line-height: 1.8;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; os.rename(path,file_path[0]+&#8217;/&#8217;+lists[0]+'_fc.'+file_ext)</span><br /> <span style="line-height: 1.8;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; i+=1&nbsp;<span style="line-height: 1.8;">#注意这里的i是一个陷阱</span></span><br /> <span style="line-height: 1.8;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #或者</span><br /> <span style="line-height: 1.8;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #img_ext = 'bmp|jpeg|gif|psd|png|jpg'</span><br /> <span style="line-height: 1.8;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #if file_ext in img_ext:</span><br /> <span style="line-height: 1.8;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #&nbsp;&nbsp;&nbsp; print('ok&#8212;'+file_ext)</span><br /> <span style="line-height: 1.8;">&nbsp;&nbsp;&nbsp; elif os.path.isdir(path):</span><br /> <span style="line-height: 1.8;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for x in os.listdir(path):</span><br /> <span style="line-height: 1.8;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; change_name(os.path.join(path,x))&nbsp;<span style="line-height: 1.8;">#os.path.join()在路径处理上很有用</span></span>
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  <br /> <span style="line-height: 1.8;">img_dir = 'D:\\xx\\xx\\images'</span><br /> <span style="line-height: 1.8;">img_dir = img_dir.replace('\\','/')</span><br /> <span style="line-height: 1.8;">start = time.time()</span><br /> <span style="line-height: 1.8;">i = 0</span><br /> <span style="line-height: 1.8;">change_name(img_dir)</span><br /> <span style="line-height: 1.8;">c = time.time() &#8211; start</span><br /> <span style="line-height: 1.8;">print('程序运行耗时:%0.2f'%(c))</span><br /> <span style="line-height: 1.8;">print('总共处理了 %s 张图片'%(i))</span>
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  输出结果：
+</p>
+
+<p style="line-height: 25.2000007629395px; margin: 10px auto; font-family: Georgia, 'Times New Roman', Times, sans-serif; font-size: 14px;">
+  <span style="line-height: 1.8;">程序运行耗时:0.11</span><br /> <span style="line-height: 1.8;">总共处理了 109 张图片</span>
+</p>
+</div>
+      <hr />
+      <footer class="article-footer">
+        <div class="article-panel-footer article-meta article-footer">
+          <span class="article-meta-left">
+  <ol>
+    
+    <li><a href='//angel.owent.net/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91.html'>编程开发</a></li>
+    
+    <li><a href='//angel.owent.net/categories/%E8%BD%AC%E8%BD%BD.html'>转载</a></li>
+    
+  </ol>
+</span>
+          <span class="article-meta-right"><time datetime='2015-02-11T07:18:30.000&#43;00:00' itemprop="datePublished">2015-02-11</time></span>
+          <span class="clearfix"></span>
+        </div>
+        
+        
+<div class="article-tags">
+  <ul class="article-tag-list">
+    
+    <li class="article-tag-list-item"><a href='//angel.owent.net/tags/python.html'>Python</a></li>
+    
+    <li class="article-tag-list-item"><a href='//angel.owent.net/tags/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C.html'>文件操作</a></li>
+    
+  </ul>
+</div>
+
+      </footer>
+    </div>
+    
+<hr />
+<nav id="article-nav">
+  <ul class="pagination">
+  
+    <li class="page-item">
+      <a class="page-link" id="article-nav-newer" class="article-nav-link-wrap" href='//angel.owent.net/2015/02/top-twelve-tips-for-running-a-beta-test/'>
+        上一篇<strong>Top Twelve Tips for Running a Beta Test</strong>
+      </a>
+    </li>
+  
+  
+    <li class="page-item">
+      <a class="page-link" id="article-nav-older" class="article-nav-link-wrap" href='//angel.owent.net/2015/02/%E6%96%87%E4%BB%B6%E6%89%B9%E9%87%8F%E7%BC%96%E7%A0%81%E8%BD%AC%E6%8D%A2/'>
+        下一篇<strong>文件批量编码转换</strong>
+      </a>
+    </li>
+  
+  </ul>
+</nav>
+
+    
+<hr />
+<section id="comments">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+var disqus_config = function () {
+
+this.page.identifier = '201501';
+
+};
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://angel-13.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+  </div>
+</article></div>
+</section></div>
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      <strong id="footer-left">
+        &copy; 2018
+        ANGEL
+        
+        
+      </strong>
+      <strong id="footer-right">
+        
+        
+        发布者 <a href="https://gohugo.io/" target="_blank">Hugo</a>,
+        主题 <a href="https://github.com/owt5008137/hugo-theme-distinctionpp" target="_blank">distinctionpp</a>
+      </strong>
+      <span class="clearfix"></span>
+    </div>
+  </div>
+</footer>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js' crossorigin="anonymous"></script>
+  
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.min.js' crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js'></script>
+
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/capnproto.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/cmake.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/d.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/dos.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/erlang.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/less.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/lua.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/php.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/powershell.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/protobuf.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/profile.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/typescript.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/vim.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/rust.min.js'></script>
+<script type="text/javascript">
+jQuery(function (){
+    jQuery("head").append('<link rel="stylesheet" href="\/\/cdnjs.cloudflare.com\/ajax\/libs\/highlight.js\/9.12.0\/styles\/vs2015.min.css" />');
+    if (window.JSON) {
+        hljs.configure(JSON.parse("{\"languages\":{},\"tabreplace\":\"    \",\"usebr\":false}"));
+    } else {
+        hljs.configure(evel("{\"languages\":{},\"tabreplace\":\"    \",\"usebr\":false}"));
+    }
+    jQuery('pre\x3ecode').each(function(i, block) {
+        try {
+            hljs.highlightBlock(block);
+        } catch (e) {
+            if (window.console) {
+                console.log(e.toString() + "\r\nMaybe can not detect the language");
+            }
+        }
+    });
+});
+</script>
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-19298704-3"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-19298704-3');
+</script>
+
+
+
+
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js'></script>
+<script type="text/javascript">
+jQuery(function(){
+    jQuery("head").append('<link rel="stylesheet" href="\/\/cdnjs.cloudflare.com\/ajax\/libs\/KaTeX\/0.9.0\/katex.min.css" />');
+    renderMathInElement(document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "\\[", right: "\\]", display: true},
+            {left: "\\(", right: "\\)", display: false},
+            {left: "`$", right: "$`", display: false}
+        ],
+        ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    });
+});
+</script>
+
+
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js'></script>
+
+
+</div>
+</body></html>

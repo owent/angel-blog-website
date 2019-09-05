@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  
+  
+  <meta charset="utf-8" />
+  <title>Android动画|ANGEL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="canonical" href="//angel.owent.net/2014/09/android%E5%8A%A8%E7%94%BB/">
+  <link href="//angel.owent.net/index.xml" rel="alternate" type="application/rss+xml" title="ANGEL" />
+  
+  <link rel="icon" href='../../../favicon.ico' />
+  
+  
+  <link rel="stylesheet" href='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css' crossorigin="anonymous" />
+  
+  <link rel="stylesheet" href='//angel.owent.net/css/style.css' />
+
+  
+  <script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js' crossorigin="anonymous"></script>
+  
+  
+  
+</head>
+<body><div id="container"><div id="wrap">
+<header id="header">
+  <div id="banner"></div>
+  <div id="header-outer">
+    <div id="header-title">
+      <h1 id="site-title">
+        <a href="//angel.owent.net" id="logo">ANGEL</a>
+      </h1>
+      
+      <h2 id="site-description">Living for the here and now</h2>
+      
+    </div>
+    <div id="header-inner">
+      <nav id="main-nav" class="navbar navbar-expand-md navbar-dark">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#main-nav-links" aria-controls="main-nav-links" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a id="main-nav-brand" class="navbar-brand collapse" href="#">#</a>
+        <div class="collapse navbar-collapse" id="main-nav-links">
+          <ul class="navbar-nav mr-auto">
+            
+              
+                <li class="nav-item"><a class="nav-link" href="../../../" title='Home'>Home</a></li>
+              
+                <li class="nav-item"><a class="nav-link" href="../../../archives.html" title='Archives'>Archives</a></li>
+              
+            
+            <li class="nav-item"><a id="nav-rss-link" class="nav-link" href="//angel.owent.net/index.xml" title='RSS订阅'>RSS订阅</a></li>
+          </ul>
+          
+          <form class="form-inline" method="get" accept-charset="UTF-8" action='//www.bing.com/search'>
+            <input type="hidden" name='q1' value='site:angel.owent.net' />
+            <input class="form-control" type="text" placeholder='搜索' name='q' />
+            <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">搜索</button>
+          </form>
+          
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+<div id="main"><section id="main-content">
+<div id="post-content"><article id="post-f2202705d3fa782f2d47abcca42333db" class="article-panel article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-panel-inner article-inner">
+    <div class="article-inner">
+      <header class="article-header"><h1 itemprop="name"><a class='article-title' href="//angel.owent.net/2014/09/android%E5%8A%A8%E7%94%BB/" target="_blank" itemprop="url">Android动画</a></h1></header><hr />
+      
+      <div class="article-entry" itemprop="articleBody"><p>平移，缩放，旋转，透明度，这里都不说了，没啥意思的感觉，只记录一点。</p>
+
+<p><span style="font-size:22px;"><span style="color:#0000FF;"><span style="font-family: Monaco, Consolas, 'Lucida Console', 'Courier New', serif; line-height: 21.6000003814697px; background-color: rgb(247, 247, 247);">pivot 使用百分数来表示的</span></span></span></p>
+
+<p><span style="color: rgb(102, 102, 102); font-family: Monaco, Consolas, 'Lucida Console', 'Courier New', serif; font-size: 12px; line-height: 21.6000003814697px; background-color: rgb(247, 247, 247);">&nbsp;<strong>pivotX = 0% , pivotY = 0% 标识左上角</strong></span></p>
+
+<p><strong><span style="color: rgb(102, 102, 102); font-family: Monaco, Consolas, 'Lucida Console', 'Courier New', serif; font-size: 12px; line-height: 21.6000003814697px; background-color: rgb(247, 247, 247);">&nbsp;pivotX = 100% , pivotY = 0% 代表 右上角</span></strong></p>
+
+<p><strong><span style="color: rgb(102, 102, 102); font-family: Monaco, Consolas, 'Lucida Console', 'Courier New', serif; font-size: 12px; line-height: 21.6000003814697px; background-color: rgb(247, 247, 247);">&nbsp;pivotX = 0% , pivotY = 100% 代表 左下角</span></strong></p>
+
+<p><strong><span style="color: rgb(102, 102, 102); font-family: Monaco, Consolas, 'Lucida Console', 'Courier New', serif; font-size: 12px; line-height: 21.6000003814697px; background-color: rgb(247, 247, 247);">&nbsp;pivotX = 100% , pivotY = 100% 代表 右下角</span></strong></p>
+
+<p><strong><span style="color: rgb(102, 102, 102); font-family: Monaco, Consolas, 'Lucida Console', 'Courier New', serif; font-size: 12px; line-height: 21.6000003814697px; background-color: rgb(247, 247, 247);">&nbsp;pivotX = 50% , pivotY = 50% &nbsp;代表中间位置</span></strong></p>
+
+<p>&nbsp;看完这些相信应该明白具体是怎么回事儿了，这种方式比用绝对定位的像素来确定好的简直太多了，都是相对位置，爱死了的说</p>
+</div>
+      <hr />
+      <footer class="article-footer">
+        <div class="article-panel-footer article-meta article-footer">
+          <span class="article-meta-left">
+  <ol>
+    
+    <li><a href='//angel.owent.net/categories/%E6%9C%AA%E5%88%86%E7%B1%BB.html'>未分类</a></li>
+    
+  </ol>
+</span>
+          <span class="article-meta-right"><time datetime='2014-09-29T13:50:41.000&#43;00:00' itemprop="datePublished">2014-09-29</time></span>
+          <span class="clearfix"></span>
+        </div>
+        
+        
+      </footer>
+    </div>
+    
+<hr />
+<nav id="article-nav">
+  <ul class="pagination">
+  
+    <li class="page-item">
+      <a class="page-link" id="article-nav-newer" class="article-nav-link-wrap" href='//angel.owent.net/2015/02/%E6%96%87%E4%BB%B6%E6%89%B9%E9%87%8F%E7%BC%96%E7%A0%81%E8%BD%AC%E6%8D%A2/'>
+        上一篇<strong>文件批量编码转换</strong>
+      </a>
+    </li>
+  
+  
+    <li class="page-item">
+      <a class="page-link" id="article-nav-older" class="article-nav-link-wrap" href='//angel.owent.net/2014/09/android%E8%87%AA%E5%AE%9A%E4%B9%89notification%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/'>
+        下一篇<strong>Android自定义Notification知识总结</strong>
+      </a>
+    </li>
+  
+  </ul>
+</nav>
+
+    
+<hr />
+<section id="comments">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+var disqus_config = function () {
+
+this.page.identifier = '201431';
+
+};
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://angel-13.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+  </div>
+</article></div>
+</section></div>
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      <strong id="footer-left">
+        &copy; 2018
+        ANGEL
+        
+        
+      </strong>
+      <strong id="footer-right">
+        
+        
+        发布者 <a href="https://gohugo.io/" target="_blank">Hugo</a>,
+        主题 <a href="https://github.com/owt5008137/hugo-theme-distinctionpp" target="_blank">distinctionpp</a>
+      </strong>
+      <span class="clearfix"></span>
+    </div>
+  </div>
+</footer>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js' crossorigin="anonymous"></script>
+  
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.min.js' crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js'></script>
+
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/capnproto.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/cmake.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/d.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/dos.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/erlang.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/less.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/lua.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/php.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/powershell.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/protobuf.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/profile.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/typescript.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/vim.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/rust.min.js'></script>
+<script type="text/javascript">
+jQuery(function (){
+    jQuery("head").append('<link rel="stylesheet" href="\/\/cdnjs.cloudflare.com\/ajax\/libs\/highlight.js\/9.12.0\/styles\/vs2015.min.css" />');
+    if (window.JSON) {
+        hljs.configure(JSON.parse("{\"languages\":{},\"tabreplace\":\"    \",\"usebr\":false}"));
+    } else {
+        hljs.configure(evel("{\"languages\":{},\"tabreplace\":\"    \",\"usebr\":false}"));
+    }
+    jQuery('pre\x3ecode').each(function(i, block) {
+        try {
+            hljs.highlightBlock(block);
+        } catch (e) {
+            if (window.console) {
+                console.log(e.toString() + "\r\nMaybe can not detect the language");
+            }
+        }
+    });
+});
+</script>
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-19298704-3"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-19298704-3');
+</script>
+
+
+
+
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js'></script>
+<script type="text/javascript">
+jQuery(function(){
+    jQuery("head").append('<link rel="stylesheet" href="\/\/cdnjs.cloudflare.com\/ajax\/libs\/KaTeX\/0.9.0\/katex.min.css" />');
+    renderMathInElement(document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "\\[", right: "\\]", display: true},
+            {left: "\\(", right: "\\)", display: false},
+            {left: "`$", right: "$`", display: false}
+        ],
+        ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    });
+});
+</script>
+
+
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js'></script>
+
+
+</div>
+</body></html>

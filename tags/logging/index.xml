@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>logging on ANGEL</title>
+    <link>//angel.owent.net/tags/logging.html</link>
+    <description>Recent content in logging on ANGEL</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <managingEditor>angelg0426@hotmail.com (Angel)</managingEditor>
+    <webMaster>angelg0426@hotmail.com (Angel)</webMaster>
+    <lastBuildDate>Tue, 03 Jun 2014 06:46:37 +0000</lastBuildDate>
+    
+	<atom:link href="//angel.owent.net/tags/logging/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Java-log-JDK日志管理组件</title>
+      <link>//angel.owent.net/2014/06/jdk%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86%E7%BB%84%E4%BB%B6/</link>
+      <pubDate>Tue, 03 Jun 2014 06:46:37 +0000</pubDate>
+      <author>angelg0426@hotmail.com (Angel)</author>
+      <guid>//angel.owent.net/2014/06/jdk%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86%E7%BB%84%E4%BB%B6/</guid>
+      <description>JDK日志管理组件：java.util.logging,这里只是简单汇总，并介绍个示例详情直接看JDK文档即可： LogManager，存在一</description>
+    </item>
+    
+  </channel>
+</rss>

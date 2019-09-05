@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>URL on ANGEL</title>
+    <link>//angel.owent.net/tags/url.html</link>
+    <description>Recent content in URL on ANGEL</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <managingEditor>angelg0426@hotmail.com (Angel)</managingEditor>
+    <webMaster>angelg0426@hotmail.com (Angel)</webMaster>
+    <lastBuildDate>Wed, 07 May 2014 03:26:14 +0000</lastBuildDate>
+    
+	<atom:link href="//angel.owent.net/tags/url/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Java中的URLEncode</title>
+      <link>//angel.owent.net/2014/05/java%E4%B8%AD%E7%9A%84urlencode/</link>
+      <pubDate>Wed, 07 May 2014 03:26:14 +0000</pubDate>
+      <author>angelg0426@hotmail.com (Angel)</author>
+      <guid>//angel.owent.net/2014/05/java%E4%B8%AD%E7%9A%84urlencode/</guid>
+      <description>应用场景 SVN上存放了一个Excel文件A.xlsx，随时都可以会更新其中的数据。我要用该A.xlsx作为数据源，读取数据并显示在一个web</description>
+    </item>
+    
+  </channel>
+</rss>

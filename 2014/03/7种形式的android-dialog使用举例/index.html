@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  
+  
+  <meta charset="utf-8" />
+  <title>7种形式的Android Dialog使用举例|ANGEL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="canonical" href="//angel.owent.net/2014/03/7%E7%A7%8D%E5%BD%A2%E5%BC%8F%E7%9A%84android-dialog%E4%BD%BF%E7%94%A8%E4%B8%BE%E4%BE%8B/">
+  <link href="//angel.owent.net/index.xml" rel="alternate" type="application/rss+xml" title="ANGEL" />
+  
+  <link rel="icon" href='../../../favicon.ico' />
+  
+  
+  <link rel="stylesheet" href='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css' crossorigin="anonymous" />
+  
+  <link rel="stylesheet" href='//angel.owent.net/css/style.css' />
+
+  
+  <script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js' crossorigin="anonymous"></script>
+  
+  
+  
+</head>
+<body><div id="container"><div id="wrap">
+<header id="header">
+  <div id="banner"></div>
+  <div id="header-outer">
+    <div id="header-title">
+      <h1 id="site-title">
+        <a href="//angel.owent.net" id="logo">ANGEL</a>
+      </h1>
+      
+      <h2 id="site-description">Living for the here and now</h2>
+      
+    </div>
+    <div id="header-inner">
+      <nav id="main-nav" class="navbar navbar-expand-md navbar-dark">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#main-nav-links" aria-controls="main-nav-links" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a id="main-nav-brand" class="navbar-brand collapse" href="#">#</a>
+        <div class="collapse navbar-collapse" id="main-nav-links">
+          <ul class="navbar-nav mr-auto">
+            
+              
+                <li class="nav-item"><a class="nav-link" href="../../../" title='Home'>Home</a></li>
+              
+                <li class="nav-item"><a class="nav-link" href="../../../archives.html" title='Archives'>Archives</a></li>
+              
+            
+            <li class="nav-item"><a id="nav-rss-link" class="nav-link" href="//angel.owent.net/index.xml" title='RSS订阅'>RSS订阅</a></li>
+          </ul>
+          
+          <form class="form-inline" method="get" accept-charset="UTF-8" action='//www.bing.com/search'>
+            <input type="hidden" name='q1' value='site:angel.owent.net' />
+            <input class="form-control" type="text" placeholder='搜索' name='q' />
+            <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">搜索</button>
+          </form>
+          
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+<div id="main"><section id="main-content">
+<div id="post-content"><article id="post-3412f2ec87a2500c594f41238b631b3e" class="article-panel article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-panel-inner article-inner">
+    <div class="article-inner">
+      <header class="article-header"><h1 itemprop="name"><a class='article-title' href="//angel.owent.net/2014/03/7%E7%A7%8D%E5%BD%A2%E5%BC%8F%E7%9A%84android-dialog%E4%BD%BF%E7%94%A8%E4%B8%BE%E4%BE%8B/" target="_blank" itemprop="url">7种形式的Android Dialog使用举例</a></h1></header><hr />
+      
+      <div class="article-entry" itemprop="articleBody"><p style="padding: 0px; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;">
+  原文链接:http://www.oschina.net/question/54100_32486#answers<br /> 在Android开发中，我们经常会需要在Android界面上弹出一些对话框，比如询问用户或者让用户选择。这些功能我们叫它Android Dialog对话框，在我们使用Android的过程中，我归纳了一下，Android Dialog的类型无非也就7种，下面我分别向大家介绍这7种Android Dialog对话框的使用方法，希望对大家能有所帮助。
+</p>
+
+<p style="padding: 0px; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;">
+  1.该效果是当按返回按钮时弹出一个提示，来确保无误操作，采用常见的对话框样式。
+</p>
+
+<p style="padding: 0px; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;">
+  <a href="http://static.oschina.net/uploads/img/201111/22080739_OBvd.jpg" style="padding: 0px; margin: 0px; color: rgb(62, 98, 166); outline: 0px;" target="_blank"><img alt="" src="http://static.oschina.net/uploads/img/201111/22080739_OBvd.jpg" style="padding: 0px; margin: 0px; border: 0px; max-width: 550px; cursor: pointer;" /></a>
+</p>
+
+<p style="padding: 0px; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;">
+  创建dialog对话框方法代码如下：
+</p>
+
+<div class="syntaxhighlighter  " id="highlighter_546491" style="width: 669.234375px; color: rgb(0, 0, 0); padding: 1px !important; margin: 1em 0px !important; border: 0px !important; outline: 0px !important; background-image: none !important; float: none !important; vertical-align: baseline !important; position: relative !important; left: auto !important; top: auto !important; right: auto !important; bottom: auto !important; height: auto !important; line-height: 1.1em !important; font-family: Consolas, 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace !important; font-size: 10pt !important; min-height: auto !important;">
+  <div class="lines" style="padding: 0px !important; margin: 0px !important; border: 0px !important; outline: 0px !important; background-image: none !important; float: none !important; vertical-align: baseline !important; position: static !important; left: auto !important; top: auto !important; right: auto !important; bottom: auto !important; height: auto !important; width: auto !important; line-height: 1.1em !important; font-size: 10pt !important; min-height: auto !important;">
+    <div class="line alt1" style="padding: 0px !important; margin: 0px !important; border: 0px !important; outline: 0px !important; background-image: none !important; float: none !important; vertical-align: baseline !important; position: static !important; left: auto !important; top: auto !important; right: auto !important; bottom: auto !important; height: auto !important; width: auto !important; line-height: 1.1em !important; font-size: 10pt !important; min-height: auto !important;">
+      &nbsp;
+    </div>
+
+<pre><code>&lt;pre class=&quot;brush:java;&quot;&gt;
+</code></pre>
+
+<p>protected void dialog() {<br />
+　　  AlertDialog.Builder builder = new Builder(Main.this);<br />
+　　  builder.setMessage(&ldquo;确认退出吗？&rdquo;);<br />
+　　  builder.setTitle(&ldquo;提示&rdquo;);<br />
+　　  builder.setPositiveButton(&ldquo;确认&rdquo;, new OnClickListener() {<br />
+　　   @Override<br />
+　　   public void onClick(DialogInterface dialog, int which) {<br />
+　　    dialog.dismiss();<br />
+　　    Main.this.finish();<br />
+　　   }<br />
+　　  });<br />
+　　  builder.setNegativeButton(&ldquo;取消&rdquo;, new OnClickListener() {<br />
+　　   @Override<br />
+　　   public void onClick(DialogInterface dialog, int which) {<br />
+　　    dialog.dismiss();<br />
+　　   }<br />
+　　  });<br />
+　　  builder.create().show();<br />
+}<br />
+</pre></p><br />
+  </div><br />
+</div></p>
+
+<p><span style="color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;">在onKeyDown(int keyCode, KeyEvent event)方法中调用此方法&nbsp;</span></p>
+
+<div class="syntaxhighlighter  " id="highlighter_477308" style="width: 669.234375px; color: rgb(0, 0, 0); padding: 1px !important; margin: 1em 0px !important; border: 0px !important; outline: 0px !important; background-image: none !important; float: none !important; vertical-align: baseline !important; position: relative !important; left: auto !important; top: auto !important; right: auto !important; bottom: auto !important; height: auto !important; line-height: 1.1em !important; font-family: Consolas, 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace !important; font-size: 10pt !important; min-height: auto !important;">
+  <div class="lines" style="padding: 0px !important; margin: 0px !important; border: 0px !important; outline: 0px !important; background-image: none !important; float: none !important; vertical-align: baseline !important; position: static !important; left: auto !important; top: auto !important; right: auto !important; bottom: auto !important; height: auto !important; width: auto !important; line-height: 1.1em !important; font-size: 10pt !important; min-height: auto !important;">
+    <div class="line alt1" style="padding: 0px !important; margin: 0px !important; border: 0px !important; outline: 0px !important; background-image: none !important; float: none !important; vertical-align: baseline !important; position: static !important; left: auto !important; top: auto !important; right: auto !important; bottom: auto !important; height: auto !important; width: auto !important; line-height: 1.1em !important; font-size: 10pt !important; min-height: auto !important;">
+      &nbsp;
+    </div>
+
+<pre><code>&lt;pre class=&quot;brush:java;&quot;&gt;
+</code></pre>
+
+<p>public boolean onKeyDown(int keyCode, KeyEvent event) {<br />
+　　  if (keyCode == KeyEvent.KEYCODE_BACK &amp;&amp; event.getRepeatCount() == 0) {<br />
+　　   dialog();<br />
+　　  }<br />
+　　  return false;<br />
+}<br />
+</pre></p><br />
+  </div><br />
+</div></p>
+
+<p><span style="color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;">2.改变了对话框的图表，添加了三个按钮</span></p>
+
+<p style="padding: 0px; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;">
+  &nbsp;
+</p>
+
+<p style="padding: 0px; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;">
+  <a href="http://static.oschina.net/uploads/img/201111/22080739_KmJt.jpg" style="padding: 0px; margin: 0px; color: rgb(62, 98, 166); outline: 0px;" target="_blank"><img alt="" src="http://static.oschina.net/uploads/img/201111/22080739_KmJt.jpg" style="padding: 0px; margin: 0px; border: 0px; max-width: 550px; cursor: pointer;" /></a>
+</p>
+
+<p style="padding: 0px; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;">
+  创建dialog的方法代码如下：
+</p>
+
+<div class="syntaxhighlighter  " id="highlighter_676003" style="width: 669.234375px; color: rgb(0, 0, 0); padding: 1px !important; margin: 1em 0px !important; border: 0px !important; outline: 0px !important; background-image: none !important; float: none !important; vertical-align: baseline !important; position: relative !important; left: auto !important; top: auto !important; right: auto !important; bottom: auto !important; height: auto !important; line-height: 1.1em !important; font-family: Consolas, 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace !important; font-size: 10pt !important; min-height: auto !important;">
+  <div class="lines" style="padding: 0px !important; margin: 0px !important; border: 0px !important; outline: 0px !important; background-image: none !important; float: none !important; vertical-align: baseline !important; position: static !important; left: auto !important; top: auto !important; right: auto !important; bottom: auto !important; height: auto !important; width: auto !important; line-height: 1.1em !important; font-size: 10pt !important; min-height: auto !important;">
+    <div class="line alt1" style="padding: 0px !important; margin: 0px !important; border: 0px !important; outline: 0px !important; background-image: none !important; float: none !important; vertical-align: baseline !important; position: static !important; left: auto !important; top: auto !important; right: auto !important; bottom: auto !important; height: auto !important; width: auto !important; line-height: 1.1em !important; font-size: 10pt !important; min-height: auto !important;">
+      &nbsp;
+    </div>
+
+<pre><code>&lt;pre class=&quot;brush:java;&quot;&gt;
+</code></pre>
+
+<p>Dialog dialog = new AlertDialog.Builder(this).setIcon(<br />
+　　     android.R.drawable.btn_star).setTitle(&ldquo;喜好调查&rdquo;).setMessage(<br />
+　　     &ldquo;你喜欢李连杰的电影吗？&rdquo;).setPositiveButton(&ldquo;很喜欢&rdquo;,<br />
+　　     new OnClickListener() {<br />
+　　      @Override<br />
+　　      public void onClick(DialogInterface dialog, int which) {<br />
+　　       // TODO Auto-generated method stub<br />
+　　       Toast.makeText(Main.this, &ldquo;我很喜欢他的电影。&rdquo;,<br />
+　　         Toast.LENGTH_LONG).show();<br />
+　　      }<br />
+　　     }).setNegativeButton(&ldquo;不喜欢&rdquo;, new OnClickListener() {<br />
+　　    @Override<br />
+　　    public void onClick(DialogInterface dialog, int which) {<br />
+　　     // TODO Auto-generated method stub<br />
+　　     Toast.makeText(Main.this, &ldquo;我不喜欢他的电影。&rdquo;, Toast.LENGTH_LONG).show();<br />
+　　    }<br />
+　　   }).setNeutralButton(&ldquo;一般&rdquo;, new OnClickListener() {<br />
+　　    @Override<br />
+　　    public void onClick(DialogInterface dialog, int which) {<br />
+　　     // TODO Auto-generated method stub<br />
+　　     Toast.makeText(Main.this, &ldquo;谈不上喜欢不喜欢。&rdquo;, Toast.LENGTH_LONG).show();<br />
+　　    }<br />
+　　   }).create();<br />
+    dialog.show();<br />
+</pre></p><br />
+  </div><br />
+</div></p>
+
+<p><span style="color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;">3.信息内容是一个简单的View类型</span></p>
+
+<p style="padding: 0px; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;">
+  &nbsp;
+</p>
+
+<p style="padding: 0px; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;">
+  <a href="http://static.oschina.net/uploads/img/201111/22080740_ZOvg.jpg" style="padding: 0px; margin: 0px; color: rgb(62, 98, 166); outline: 0px;" target="_blank"><img alt="" src="http://static.oschina.net/uploads/img/201111/22080740_ZOvg.jpg" style="padding: 0px; margin: 0px; border: 0px; max-width: 550px; cursor: pointer;" /></a>
+</p>
+
+<p style="padding: 0px; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;">
+  创建dialog方法的代码如下：
+</p>
+
+<div class="syntaxhighlighter  " id="highlighter_948018" style="width: 669.234375px; color: rgb(0, 0, 0); padding: 1px !important; margin: 1em 0px !important; border: 0px !important; outline: 0px !important; background-image: none !important; float: none !important; vertical-align: baseline !important; position: relative !important; left: auto !important; top: auto !important; right: auto !important; bottom: auto !important; height: auto !important; line-height: 1.1em !important; font-family: Consolas, 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace !important; font-size: 10pt !important; min-height: auto !important;">
+  <div class="lines" style="padding: 0px !important; margin: 0px !important; border: 0px !important; outline: 0px !important; background-image: none !important; float: none !important; vertical-align: baseline !important; position: static !important; left: auto !important; top: auto !important; right: auto !important; bottom: auto !important; height: auto !important; width: auto !important; line-height: 1.1em !important; font-size: 10pt !important; min-height: auto !important;">
+    <div class="line alt1" style="padding: 0px !important; margin: 0px !important; border: 0px !important; outline: 0px !important; background-image: none !important; float: none !important; vertical-align: baseline !important; position: static !important; left: auto !important; top: auto !important; right: auto !important; bottom: auto !important; height: auto !important; width: auto !important; line-height: 1.1em !important; font-size: 10pt !important; min-height: auto !important;">
+      &nbsp;
+    </div>
+
+<pre><code>&lt;pre class=&quot;brush:java;&quot;&gt;
+</code></pre>
+
+<p>new AlertDialog.Builder(this).setTitle(&ldquo;请输入&rdquo;).setIcon(<br />
+　　     android.R.drawable.ic_dialog_info).setView(<br />
+　　     new EditText(this)).setPositiveButton(&ldquo;确定&rdquo;, null)<br />
+　　     .setNegativeButton(&ldquo;取消&rdquo;, null).show();<br />
+</pre></p><br />
+  </div><br />
+</div></p>
+
+<p><span style="color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;">4.信息内容是一组单选框</span></p>
+
+<p style="padding: 0px; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;">
+  &nbsp;
+</p>
+
+<p style="padding: 0px; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;">
+  <a href="http://static.oschina.net/uploads/img/201111/22080740_3IJr.jpg" style="padding: 0px; margin: 0px; color: rgb(62, 98, 166); outline: 0px;" target="_blank"><img alt="" src="http://static.oschina.net/uploads/img/201111/22080740_3IJr.jpg" style="padding: 0px; margin: 0px; border: 0px; max-width: 550px; cursor: pointer;" /></a>
+</p>
+
+<p style="padding: 0px; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;">
+  创建dialog方法的代码如下：
+</p>
+
+<div class="syntaxhighlighter  " id="highlighter_579441" style="width: 669.234375px; color: rgb(0, 0, 0); padding: 1px !important; margin: 1em 0px !important; border: 0px !important; outline: 0px !important; background-image: none !important; float: none !important; vertical-align: baseline !important; position: relative !important; left: auto !important; top: auto !important; right: auto !important; bottom: auto !important; height: auto !important; line-height: 1.1em !important; font-family: Consolas, 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace !important; font-size: 10pt !important; min-height: auto !important;">
+  <div class="lines" style="padding: 0px !important; margin: 0px !important; border: 0px !important; outline: 0px !important; background-image: none !important; float: none !important; vertical-align: baseline !important; position: static !important; left: auto !important; top: auto !important; right: auto !important; bottom: auto !important; height: auto !important; width: auto !important; line-height: 1.1em !important; font-size: 10pt !important; min-height: auto !important;">
+    <div class="line alt1" style="padding: 0px !important; margin: 0px !important; border: 0px !important; outline: 0px !important; background-image: none !important; float: none !important; vertical-align: baseline !important; position: static !important; left: auto !important; top: auto !important; right: auto !important; bottom: auto !important; height: auto !important; width: auto !important; line-height: 1.1em !important; font-size: 10pt !important; min-height: auto !important;">
+      &nbsp;
+    </div>
+
+<pre><code>&lt;pre class=&quot;brush:java;&quot;&gt;
+</code></pre>
+
+<p>new AlertDialog.Builder(this).setTitle(&ldquo;复选框&rdquo;).setMultiChoiceItems(<br />
+　　     new String[] { &ldquo;Item1&rdquo;, &ldquo;Item2&rdquo; }, null, null)<br />
+　　     .setPositiveButton(&ldquo;确定&rdquo;, null)<br />
+　　     .setNegativeButton(&ldquo;取消&rdquo;, null).show();<br />
+</pre></p><br />
+  </div><br />
+</div></p>
+
+<p><span style="color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;">5.信息内容是一组多选框</span></p>
+
+<p style="padding: 0px; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;">
+  &nbsp;
+</p>
+
+<p style="padding: 0px; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;">
+  <a href="http://static.oschina.net/uploads/img/201111/22080740_4U1Y.jpg" style="padding: 0px; margin: 0px; color: rgb(62, 98, 166); outline: 0px;" target="_blank"><img alt="" src="http://static.oschina.net/uploads/img/201111/22080740_4U1Y.jpg" style="padding: 0px; margin: 0px; border: 0px; max-width: 550px; cursor: pointer;" /></a>
+</p>
+
+<p style="padding: 0px; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;">
+  创建dialog方法的代码如下：
+</p>
+
+<div class="syntaxhighlighter  " id="highlighter_612198" style="width: 669.234375px; color: rgb(0, 0, 0); padding: 1px !important; margin: 1em 0px !important; border: 0px !important; outline: 0px !important; background-image: none !important; float: none !important; vertical-align: baseline !important; position: relative !important; left: auto !important; top: auto !important; right: auto !important; bottom: auto !important; height: auto !important; line-height: 1.1em !important; font-family: Consolas, 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace !important; font-size: 10pt !important; min-height: auto !important;">
+  <div class="lines" style="padding: 0px !important; margin: 0px !important; border: 0px !important; outline: 0px !important; background-image: none !important; float: none !important; vertical-align: baseline !important; position: static !important; left: auto !important; top: auto !important; right: auto !important; bottom: auto !important; height: auto !important; width: auto !important; line-height: 1.1em !important; font-size: 10pt !important; min-height: auto !important;">
+    <div class="line alt1" style="padding: 0px !important; margin: 0px !important; border: 0px !important; outline: 0px !important; background-image: none !important; float: none !important; vertical-align: baseline !important; position: static !important; left: auto !important; top: auto !important; right: auto !important; bottom: auto !important; height: auto !important; width: auto !important; line-height: 1.1em !important; font-size: 10pt !important; min-height: auto !important;">
+      &nbsp;
+    </div>
+
+<pre><code>&lt;pre class=&quot;brush:java;&quot;&gt;
+</code></pre>
+
+<p>new AlertDialog.Builder(this).setTitle(&ldquo;单选框&rdquo;).setIcon(<br />
+　　     android.R.drawable.ic_dialog_info).setSingleChoiceItems(<br />
+　　     new String[] { &ldquo;Item1&rdquo;, &ldquo;Item2&rdquo; }, 0,<br />
+　　     new DialogInterface.OnClickListener() {<br />
+　　      public void onClick(DialogInterface dialog, int which) {<br />
+　　       dialog.dismiss();<br />
+　　      }<br />
+　　     }).setNegativeButton(&ldquo;取消&rdquo;, null).show()<br />
+</pre></p><br />
+  </div><br />
+</div></p>
+
+<p><span style="color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;">6.信息内容是一组简单列表项</span></p>
+
+<p style="padding: 0px; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;">
+  &nbsp;
+</p>
+
+<p style="padding: 0px; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;">
+  <a href="http://static.oschina.net/uploads/img/201111/22080740_MFfs.jpg" style="padding: 0px; margin: 0px; color: rgb(62, 98, 166); outline: 0px;" target="_blank"><img alt="" src="http://static.oschina.net/uploads/img/201111/22080740_MFfs.jpg" style="padding: 0px; margin: 0px; border: 0px; max-width: 550px; cursor: pointer;" /></a>
+</p>
+
+<p style="padding: 0px; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;">
+  创建dialog的方法代码如下：
+</p>
+
+<div class="syntaxhighlighter  " id="highlighter_795718" style="width: 669.234375px; color: rgb(0, 0, 0); padding: 1px !important; margin: 1em 0px !important; border: 0px !important; outline: 0px !important; background-image: none !important; float: none !important; vertical-align: baseline !important; position: relative !important; left: auto !important; top: auto !important; right: auto !important; bottom: auto !important; height: auto !important; line-height: 1.1em !important; font-family: Consolas, 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace !important; font-size: 10pt !important; min-height: auto !important;">
+  <div class="lines" style="padding: 0px !important; margin: 0px !important; border: 0px !important; outline: 0px !important; background-image: none !important; float: none !important; vertical-align: baseline !important; position: static !important; left: auto !important; top: auto !important; right: auto !important; bottom: auto !important; height: auto !important; width: auto !important; line-height: 1.1em !important; font-size: 10pt !important; min-height: auto !important;">
+    <div class="line alt1" style="padding: 0px !important; margin: 0px !important; border: 0px !important; outline: 0px !important; background-image: none !important; float: none !important; vertical-align: baseline !important; position: static !important; left: auto !important; top: auto !important; right: auto !important; bottom: auto !important; height: auto !important; width: auto !important; line-height: 1.1em !important; font-size: 10pt !important; min-height: auto !important;">
+      &nbsp;
+    </div>
+
+<pre><code>&lt;pre class=&quot;brush:java;&quot;&gt;
+</code></pre>
+
+<p>new AlertDialog.Builder(this).setTitle(&ldquo;列表框&rdquo;).setItems(<br />
+　　     new String[] { &ldquo;Item1&rdquo;, &ldquo;Item2&rdquo; }, null).setNegativeButton(<br />
+　　     &ldquo;确定&rdquo;, null).show();<br />
+</pre></p><br />
+  </div><br />
+</div></p>
+
+<p><span style="color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;">7.信息内容是一个自定义的布局</span></p>
+
+<p style="padding: 0px; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;">
+  &nbsp;
+</p>
+
+<p style="padding: 0px; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;">
+  <a href="http://static.oschina.net/uploads/img/201111/22080741_JB4n.jpg" style="padding: 0px; margin: 0px; color: rgb(62, 98, 166); outline: 0px;" target="_blank"><img alt="" src="http://static.oschina.net/uploads/img/201111/22080741_JB4n.jpg" style="padding: 0px; margin: 0px; border: 0px; max-width: 550px; cursor: pointer;" /></a>
+</p>
+
+<p style="padding: 0px; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;">
+  dialog布局文件代码如下：
+</p>
+
+<div class="syntaxhighlighter  " id="highlighter_108773" style="width: 669.234375px; color: rgb(0, 0, 0); padding: 1px !important; margin: 1em 0px !important; border: 0px !important; outline: 0px !important; background-image: none !important; float: none !important; vertical-align: baseline !important; position: relative !important; left: auto !important; top: auto !important; right: auto !important; bottom: auto !important; height: auto !important; line-height: 1.1em !important; font-family: Consolas, 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace !important; font-size: 10pt !important; min-height: auto !important;">
+  <div class="lines" style="padding: 0px !important; margin: 0px !important; border: 0px !important; outline: 0px !important; background-image: none !important; float: none !important; vertical-align: baseline !important; position: static !important; left: auto !important; top: auto !important; right: auto !important; bottom: auto !important; height: auto !important; width: auto !important; line-height: 1.1em !important; font-size: 10pt !important; min-height: auto !important;">
+    <div class="line alt1" style="padding: 0px !important; margin: 0px !important; border: 0px !important; outline: 0px !important; background-image: none !important; float: none !important; vertical-align: baseline !important; position: static !important; left: auto !important; top: auto !important; right: auto !important; bottom: auto !important; height: auto !important; width: auto !important; line-height: 1.1em !important; font-size: 10pt !important; min-height: auto !important;">
+      &nbsp;
+    </div>
+
+<pre><code>&lt;pre class=&quot;brush:java;&quot;&gt;
+</code></pre>
+
+<p>&lt;?xml version=&ldquo;1.0&rdquo; encoding=&ldquo;utf-8&rdquo;?&gt;<br />
+　　&lt;LinearLayout xmlns:android=&ldquo;<a href="http://schemas.android.com/apk/res/android&quot;" target="_blank">http://schemas.android.com/apk/res/android&quot;</a><br />
+　　 android:layout_height=&ldquo;wrap_content&rdquo; android:layout_width=&ldquo;wrap_content&rdquo;<br />
+　　 android:background=&ldquo;#ffffffff&rdquo; android:orientation=&ldquo;horizontal&rdquo;<br />
+　　 android:id=&ldquo;@+id/dialog&rdquo;&gt;<br />
+　　 &lt;TextView android:layout_height=&ldquo;wrap_content&rdquo;<br />
+　　   android:layout_width=&ldquo;wrap_content&rdquo;<br />
+　　  android:id=&ldquo;@+id/tvname&rdquo; android:text=&ldquo;姓名：&rdquo; /&gt;<br />
+　　 &lt;EditText android:layout_height=&ldquo;wrap_content&rdquo;<br />
+　　  android:layout_width=&ldquo;wrap_content&rdquo; android:id=&ldquo;@+id/etname&rdquo;android:minWidth=&ldquo;100dip&rdquo;/&gt;<br />
+　　&lt;/LinearLayout&gt;<br />
+</pre></p><br />
+  </div><br />
+</div></p>
+
+<p><span style="color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;">创建dialog方法的代码如下：&nbsp;</span></p>
+
+<div class="syntaxhighlighter  " id="highlighter_563006" style="width: 669.234375px; color: rgb(0, 0, 0); padding: 1px !important; margin: 1em 0px !important; border: 0px !important; outline: 0px !important; background-image: none !important; float: none !important; vertical-align: baseline !important; position: relative !important; left: auto !important; top: auto !important; right: auto !important; bottom: auto !important; height: auto !important; line-height: 1.1em !important; font-family: Consolas, 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace !important; font-size: 10pt !important; min-height: auto !important;">
+  <div class="lines" style="padding: 0px !important; margin: 0px !important; border: 0px !important; outline: 0px !important; background-image: none !important; float: none !important; vertical-align: baseline !important; position: static !important; left: auto !important; top: auto !important; right: auto !important; bottom: auto !important; height: auto !important; width: auto !important; line-height: 1.1em !important; font-size: 10pt !important; min-height: auto !important;">
+    <div class="line alt1" style="padding: 0px !important; margin: 0px !important; border: 0px !important; outline: 0px !important; background-image: none !important; float: none !important; vertical-align: baseline !important; position: static !important; left: auto !important; top: auto !important; right: auto !important; bottom: auto !important; height: auto !important; width: auto !important; line-height: 1.1em !important; font-size: 10pt !important; min-height: auto !important;">
+      &nbsp;
+    </div>
+
+<pre><code>&lt;pre class=&quot;brush:java;&quot;&gt;
+</code></pre>
+
+<p>LayoutInflater inflater = getLayoutInflater();<br />
+　　   View layout = inflater.inflate(R.layout.dialog,<br />
+　　     (ViewGroup) findViewById(R.id.dialog));<br />
+　　   new AlertDialog.Builder(this).setTitle(&ldquo;自定义布局&rdquo;).setView(layout)<br />
+　　     .setPositiveButton(&ldquo;确定&rdquo;, null)<br />
+　　     .setNegativeButton(&ldquo;取消&rdquo;, null).show();<br />
+</pre></p><br />
+  </div><br />
+</div></p>
+
+<p style="padding: 0px; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;">
+  好了，以上7种Android dialog对话框的使用方法就介绍到这里了，基本都全了，如果大家在android开发过程中遇到dialog的时候就可以拿出来看看。
+</p>
+
+<p style="padding: 0px; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;">
+  另外注，本文参考文章：&nbsp;<br style="padding: 0px; margin: 0px;" /><br /> <br /> http://android.tgbus.com/Android/tutorial/201107/359812.shtml
+</p>
+</div>
+      <hr />
+      <footer class="article-footer">
+        <div class="article-panel-footer article-meta article-footer">
+          <span class="article-meta-left">
+  <ol>
+    
+    <li><a href='//angel.owent.net/categories/android.html'>Android</a></li>
+    
+    <li><a href='//angel.owent.net/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91.html'>编程开发</a></li>
+    
+    <li><a href='//angel.owent.net/categories/%E8%BD%AC%E8%BD%BD.html'>转载</a></li>
+    
+  </ol>
+</span>
+          <span class="article-meta-right"><time datetime='2014-03-05T08:36:03.000&#43;00:00' itemprop="datePublished">2014-03-05</time></span>
+          <span class="clearfix"></span>
+        </div>
+        
+        
+      </footer>
+    </div>
+    
+<hr />
+<nav id="article-nav">
+  <ul class="pagination">
+  
+    <li class="page-item">
+      <a class="page-link" id="article-nav-newer" class="article-nav-link-wrap" href='//angel.owent.net/2014/03/%E5%80%BC%E5%BE%97%E5%AD%A6%E4%B9%A0%E7%9A%84android%E8%B5%84%E6%BA%90%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/'>
+        上一篇<strong>值得学习的Android资源命名规范</strong>
+      </a>
+    </li>
+  
+  
+    <li class="page-item">
+      <a class="page-link" id="article-nav-older" class="article-nav-link-wrap" href='//angel.owent.net/2014/01/css3%E5%AE%9E%E8%B7%B5%E4%B8%AD%E5%AD%A6%E4%B9%A0/'>
+        下一篇<strong>CSS3实践中学习</strong>
+      </a>
+    </li>
+  
+  </ul>
+</nav>
+
+    
+<hr />
+<section id="comments">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+var disqus_config = function () {
+
+this.page.identifier = '201409';
+
+};
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://angel-13.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+  </div>
+</article></div>
+</section></div>
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      <strong id="footer-left">
+        &copy; 2018
+        ANGEL
+        
+        
+      </strong>
+      <strong id="footer-right">
+        
+        
+        发布者 <a href="https://gohugo.io/" target="_blank">Hugo</a>,
+        主题 <a href="https://github.com/owt5008137/hugo-theme-distinctionpp" target="_blank">distinctionpp</a>
+      </strong>
+      <span class="clearfix"></span>
+    </div>
+  </div>
+</footer>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js' crossorigin="anonymous"></script>
+  
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.min.js' crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js'></script>
+
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/capnproto.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/cmake.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/d.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/dos.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/erlang.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/less.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/lua.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/php.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/powershell.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/protobuf.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/profile.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/typescript.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/vim.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/rust.min.js'></script>
+<script type="text/javascript">
+jQuery(function (){
+    jQuery("head").append('<link rel="stylesheet" href="\/\/cdnjs.cloudflare.com\/ajax\/libs\/highlight.js\/9.12.0\/styles\/vs2015.min.css" />');
+    if (window.JSON) {
+        hljs.configure(JSON.parse("{\"languages\":{},\"tabreplace\":\"    \",\"usebr\":false}"));
+    } else {
+        hljs.configure(evel("{\"languages\":{},\"tabreplace\":\"    \",\"usebr\":false}"));
+    }
+    jQuery('pre\x3ecode').each(function(i, block) {
+        try {
+            hljs.highlightBlock(block);
+        } catch (e) {
+            if (window.console) {
+                console.log(e.toString() + "\r\nMaybe can not detect the language");
+            }
+        }
+    });
+});
+</script>
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-19298704-3"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-19298704-3');
+</script>
+
+
+
+
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js'></script>
+<script type="text/javascript">
+jQuery(function(){
+    jQuery("head").append('<link rel="stylesheet" href="\/\/cdnjs.cloudflare.com\/ajax\/libs\/KaTeX\/0.9.0\/katex.min.css" />');
+    renderMathInElement(document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "\\[", right: "\\]", display: true},
+            {left: "\\(", right: "\\)", display: false},
+            {left: "`$", right: "$`", display: false}
+        ],
+        ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    });
+});
+</script>
+
+
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js'></script>
+
+
+</div>
+</body></html>

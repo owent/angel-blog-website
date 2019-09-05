@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  
+  
+  <meta charset="utf-8" />
+  <title>Http/Servlet (三)-一些关于TCP的概念|ANGEL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="canonical" href="//angel.owent.net/2014/04/httpservlet-%E4%B8%89-%E4%B8%80%E4%BA%9B%E5%85%B3%E4%BA%8Etcp%E7%9A%84%E6%A6%82%E5%BF%B5/">
+  <link href="//angel.owent.net/index.xml" rel="alternate" type="application/rss+xml" title="ANGEL" />
+  
+  <link rel="icon" href='../../../favicon.ico' />
+  
+  
+  <link rel="stylesheet" href='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css' crossorigin="anonymous" />
+  
+  <link rel="stylesheet" href='//angel.owent.net/css/style.css' />
+
+  
+  <script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js' crossorigin="anonymous"></script>
+  
+  
+  
+</head>
+<body><div id="container"><div id="wrap">
+<header id="header">
+  <div id="banner"></div>
+  <div id="header-outer">
+    <div id="header-title">
+      <h1 id="site-title">
+        <a href="//angel.owent.net" id="logo">ANGEL</a>
+      </h1>
+      
+      <h2 id="site-description">Living for the here and now</h2>
+      
+    </div>
+    <div id="header-inner">
+      <nav id="main-nav" class="navbar navbar-expand-md navbar-dark">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#main-nav-links" aria-controls="main-nav-links" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a id="main-nav-brand" class="navbar-brand collapse" href="#">#</a>
+        <div class="collapse navbar-collapse" id="main-nav-links">
+          <ul class="navbar-nav mr-auto">
+            
+              
+                <li class="nav-item"><a class="nav-link" href="../../../" title='Home'>Home</a></li>
+              
+                <li class="nav-item"><a class="nav-link" href="../../../archives.html" title='Archives'>Archives</a></li>
+              
+            
+            <li class="nav-item"><a id="nav-rss-link" class="nav-link" href="//angel.owent.net/index.xml" title='RSS订阅'>RSS订阅</a></li>
+          </ul>
+          
+          <form class="form-inline" method="get" accept-charset="UTF-8" action='//www.bing.com/search'>
+            <input type="hidden" name='q1' value='site:angel.owent.net' />
+            <input class="form-control" type="text" placeholder='搜索' name='q' />
+            <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">搜索</button>
+          </form>
+          
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+<div id="main"><section id="main-content">
+<div id="post-content"><article id="post-635ca676858f48b30be6384315582f6e" class="article-panel article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-panel-inner article-inner">
+    <div class="article-inner">
+      <header class="article-header"><h1 itemprop="name"><a class='article-title' href="//angel.owent.net/2014/04/httpservlet-%E4%B8%89-%E4%B8%80%E4%BA%9B%E5%85%B3%E4%BA%8Etcp%E7%9A%84%E6%A6%82%E5%BF%B5/" target="_blank" itemprop="url">Http/Servlet (三)-一些关于TCP的概念</a></h1></header><hr />
+      
+      <div class="article-entry" itemprop="articleBody"><p>&nbsp; &nbsp;一点唠叨，感觉学习编程就像一个坑，要进这个坑的们还挺难，进来了之后更加会发现这是一个无底的坑。喜欢的人会在这掉进去的一路上看到一路上繁星般闪亮的别人的智慧，并尽情的吸收学习，让自己的也发光发亮。不喜欢的人会不断的感到绝望和没有未来。</p>
+
+<p>&nbsp; &nbsp;看了《Spring3.x 企业开发宝典》之后，想看看Spring的源码。看了写Spring的Web模块的源码。好奇对Http的Request和Response以及服务器自身充满了好奇。于是开始看《Http权威指南》。还顺道了解了下CGI，体验了把Tomcat怎么弄个CIG，发现用Java比较难搞，决定用下脚本。前段时间看过点Python，于是在电脑中安装了个Python。一个Demo搭建上去，Python运行出错了。有顺道看了半天的perl。</p>
+
+<p>&nbsp; &nbsp;做了个竞赛的题目，被打击了一下，决定没事儿做做ACM的题目。一个算法运行时间过长，在老公公的指导下找到的方向是矩阵。于是又回过头去复习原来以为以后永远都不会再碰的线性代数。</p>
+
+<p>&nbsp; 一个坑、两个坑、三个坑&#8230;..</p>
+
+<p><span style="font-size:larger;"><strong>进入正题：</strong></span></p>
+
+<p>&nbsp; &nbsp;几乎所有的Http都是由TCP/IP承载的。</p>
+
+<p>**TCP简介</p>
+
+<p>&nbsp;** &nbsp;TCP书链路层的协议，TCP是可靠的数据传输协议，其可靠性依赖于TCP的传输规则。TCP是分段的，由IP分组传送。TCP的分段及IP数据包明细等，见网络书籍。</p>
+
+<p><strong>TCP三次握手</strong></p>
+
+<ul>
+<li>客户端发送一个小的数据包给服务端，并设置SYN标记，表明请求建立连接<br /></li>
+<li>服务端接收到客户端的请求，设置ACK标记，与SYN标记一起发一个响应数据包给客户端，表示可以建立连接<br /></li>
+<li>客户端向服务端回送一条确认信息，连接建立，此确认数据分组的报文体部分可以包含将要传输的数据。<br />
+<br /></li>
+</ul>
+
+<p><strong>TCP四次挥手</strong></p>
+
+<ul>
+<li>客户端发送一个数据包，并用FIN标记告诉服务端，客户端数据传送完毕，<span style="color:#0000FF;">关闭自己的输出流</span><br /></li>
+<li>服务端相应一个ACK标记，表示确认<br /></li>
+<li>服务端发送完所有的数据，发送客户端确认报文，并用FIN标记告诉客户端，服务端数据发送完毕，<span style="color:#0000FF;">关闭自己的输出流</span><br /></li>
+<li>客户端发送确认数据包，并设置ACK标记<br />
+<br /></li>
+</ul>
+
+<p><span style="color:#FF0000;">注：1. 四次挥手结束之后，服务端的连接不会被立马回收，而是有一个2MLS，一般为2分钟。用来避免在相同地址和相同的端口号上，在短短的2分钟时间之内重新建立连接。2.TCP四次挥手中的蓝色标记的问题，是我个人的理解，并没有得到考证。不过一个套接字关闭自己的输出流，总是安全的</span></p>
+
+<p><strong>TCP延迟确认</strong></p>
+
+<p>&nbsp; &nbsp;每个TCP端都有一个序号和校验和，接收端完整的接收到一个TCP段之后要在确定的窗口时间内，向发送端发送一个确认信息。如果在发送端没能在确定的窗口时间之内接收到来自接收端的确认信息，就认为TCP段被损坏或者丢失，就会重发相应数据段。</p>
+
+<p><strong>Negal算法</strong></p>
+
+<p>&nbsp; &nbsp;如果用TCP发大量的只包含少量数据的分组，会对网络性能造成严重的影响。Negal算法试图将大量小的数据分组绑定在一个TCP段中发送。</p>
+
+<p>&nbsp; &nbsp;Negal算法会先发送全尺寸的TCP数据包。只有在前面传输的所有数据包都得到确认之后，Negal算法才允许发送非全尺寸的数据包，否则就等到组合为一个全尺寸的数据包之后再发送。</p>
+
+<p>&nbsp; <span style="color:#008000;">&nbsp;Negal算法的延时：</span>Negal算法的使用会导致有些小的数据包要等交久之后才能被发送。加上TCP的延迟确认，会让部分数据包要等到前面所有发送出去的数据包都得到确认之后才能被发送。</p>
+
+<p>&nbsp;</p>
+</div>
+      <hr />
+      <footer class="article-footer">
+        <div class="article-panel-footer article-meta article-footer">
+          <span class="article-meta-left">
+  <ol>
+    
+    <li><a href='//angel.owent.net/categories/web/http.html'>Web/HTTP</a></li>
+    
+    <li><a href='//angel.owent.net/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91.html'>编程开发</a></li>
+    
+    <li><a href='//angel.owent.net/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0.html'>读书笔记</a></li>
+    
+  </ol>
+</span>
+          <span class="article-meta-right"><time datetime='2014-04-18T05:43:18.000&#43;00:00' itemprop="datePublished">2014-04-18</time></span>
+          <span class="clearfix"></span>
+        </div>
+        
+        
+<div class="article-tags">
+  <ul class="article-tag-list">
+    
+    <li class="article-tag-list-item"><a href='//angel.owent.net/tags/http.html'>HTTP</a></li>
+    
+    <li class="article-tag-list-item"><a href='//angel.owent.net/tags/tcp.html'>TCP</a></li>
+    
+  </ul>
+</div>
+
+      </footer>
+    </div>
+    
+<hr />
+<nav id="article-nav">
+  <ul class="pagination">
+  
+    <li class="page-item">
+      <a class="page-link" id="article-nav-newer" class="article-nav-link-wrap" href='//angel.owent.net/2014/05/%E7%94%A8pac%E8%84%9A%E6%9C%AC%E9%85%8D%E7%BD%AE%E4%BB%A3%E7%90%86/'>
+        上一篇<strong>用PAC脚本配置代理</strong>
+      </a>
+    </li>
+  
+  
+    <li class="page-item">
+      <a class="page-link" id="article-nav-older" class="article-nav-link-wrap" href='//angel.owent.net/2014/04/httpservlet-%E4%BA%8C-http%E5%87%BD%E6%95%B0%E5%8F%8Ahttpservlet%E5%AE%9E%E7%8E%B0/'>
+        下一篇<strong>Http/Servlet (二)-HTTP函数及HttpServlet实现</strong>
+      </a>
+    </li>
+  
+  </ul>
+</nav>
+
+    
+<hr />
+<section id="comments">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+var disqus_config = function () {
+
+this.page.identifier = '201415';
+
+};
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://angel-13.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+  </div>
+</article></div>
+</section></div>
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      <strong id="footer-left">
+        &copy; 2018
+        ANGEL
+        
+        
+      </strong>
+      <strong id="footer-right">
+        
+        
+        发布者 <a href="https://gohugo.io/" target="_blank">Hugo</a>,
+        主题 <a href="https://github.com/owt5008137/hugo-theme-distinctionpp" target="_blank">distinctionpp</a>
+      </strong>
+      <span class="clearfix"></span>
+    </div>
+  </div>
+</footer>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js' crossorigin="anonymous"></script>
+  
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.min.js' crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js'></script>
+
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/capnproto.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/cmake.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/d.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/dos.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/erlang.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/less.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/lua.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/php.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/powershell.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/protobuf.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/profile.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/typescript.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/vim.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/rust.min.js'></script>
+<script type="text/javascript">
+jQuery(function (){
+    jQuery("head").append('<link rel="stylesheet" href="\/\/cdnjs.cloudflare.com\/ajax\/libs\/highlight.js\/9.12.0\/styles\/vs2015.min.css" />');
+    if (window.JSON) {
+        hljs.configure(JSON.parse("{\"languages\":{},\"tabreplace\":\"    \",\"usebr\":false}"));
+    } else {
+        hljs.configure(evel("{\"languages\":{},\"tabreplace\":\"    \",\"usebr\":false}"));
+    }
+    jQuery('pre\x3ecode').each(function(i, block) {
+        try {
+            hljs.highlightBlock(block);
+        } catch (e) {
+            if (window.console) {
+                console.log(e.toString() + "\r\nMaybe can not detect the language");
+            }
+        }
+    });
+});
+</script>
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-19298704-3"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-19298704-3');
+</script>
+
+
+
+
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js'></script>
+<script type="text/javascript">
+jQuery(function(){
+    jQuery("head").append('<link rel="stylesheet" href="\/\/cdnjs.cloudflare.com\/ajax\/libs\/KaTeX\/0.9.0\/katex.min.css" />');
+    renderMathInElement(document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "\\[", right: "\\]", display: true},
+            {left: "\\(", right: "\\)", display: false},
+            {left: "`$", right: "$`", display: false}
+        ],
+        ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    });
+});
+</script>
+
+
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js'></script>
+
+
+</div>
+</body></html>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>XML Scheme on ANGEL</title>
+    <link>//angel.owent.net/tags/xml-scheme.html</link>
+    <description>Recent content in XML Scheme on ANGEL</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <managingEditor>angelg0426@hotmail.com (Angel)</managingEditor>
+    <webMaster>angelg0426@hotmail.com (Angel)</webMaster>
+    <lastBuildDate>Thu, 08 May 2014 03:55:55 +0000</lastBuildDate>
+    
+	<atom:link href="//angel.owent.net/tags/xml-scheme/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>XML Scheme疑点总结</title>
+      <link>//angel.owent.net/2014/05/xml-scheme%E7%96%91%E7%82%B9%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Thu, 08 May 2014 03:55:55 +0000</pubDate>
+      <author>angelg0426@hotmail.com (Angel)</author>
+      <guid>//angel.owent.net/2014/05/xml-scheme%E7%96%91%E7%82%B9%E6%80%BB%E7%BB%93/</guid>
+      <description>XMl Scheme学习地址：http://www.w3school.com.cn/schema/index.asp XML Scheme示例 target</description>
+    </item>
+    
+  </channel>
+</rss>

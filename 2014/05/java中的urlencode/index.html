@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  
+  
+  <meta charset="utf-8" />
+  <title>Java中的URLEncode|ANGEL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="canonical" href="//angel.owent.net/2014/05/java%E4%B8%AD%E7%9A%84urlencode/">
+  <link href="//angel.owent.net/index.xml" rel="alternate" type="application/rss+xml" title="ANGEL" />
+  
+  <link rel="icon" href='../../../favicon.ico' />
+  
+  
+  <link rel="stylesheet" href='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css' crossorigin="anonymous" />
+  
+  <link rel="stylesheet" href='//angel.owent.net/css/style.css' />
+
+  
+  <script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js' crossorigin="anonymous"></script>
+  
+  
+  
+</head>
+<body><div id="container"><div id="wrap">
+<header id="header">
+  <div id="banner"></div>
+  <div id="header-outer">
+    <div id="header-title">
+      <h1 id="site-title">
+        <a href="//angel.owent.net" id="logo">ANGEL</a>
+      </h1>
+      
+      <h2 id="site-description">Living for the here and now</h2>
+      
+    </div>
+    <div id="header-inner">
+      <nav id="main-nav" class="navbar navbar-expand-md navbar-dark">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#main-nav-links" aria-controls="main-nav-links" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a id="main-nav-brand" class="navbar-brand collapse" href="#">#</a>
+        <div class="collapse navbar-collapse" id="main-nav-links">
+          <ul class="navbar-nav mr-auto">
+            
+              
+                <li class="nav-item"><a class="nav-link" href="../../../" title='Home'>Home</a></li>
+              
+                <li class="nav-item"><a class="nav-link" href="../../../archives.html" title='Archives'>Archives</a></li>
+              
+            
+            <li class="nav-item"><a id="nav-rss-link" class="nav-link" href="//angel.owent.net/index.xml" title='RSS订阅'>RSS订阅</a></li>
+          </ul>
+          
+          <form class="form-inline" method="get" accept-charset="UTF-8" action='//www.bing.com/search'>
+            <input type="hidden" name='q1' value='site:angel.owent.net' />
+            <input class="form-control" type="text" placeholder='搜索' name='q' />
+            <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">搜索</button>
+          </form>
+          
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+<div id="main"><section id="main-content">
+<div id="post-content"><article id="post-fa42c7432f3a4140b247a6b8264dcdb3" class="article-panel article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-panel-inner article-inner">
+    <div class="article-inner">
+      <header class="article-header"><h1 itemprop="name"><a class='article-title' href="//angel.owent.net/2014/05/java%E4%B8%AD%E7%9A%84urlencode/" target="_blank" itemprop="url">Java中的URLEncode</a></h1></header><hr />
+      
+      <div class="article-entry" itemprop="articleBody"><p><span style="font-size:larger;"><strong>应用场景</strong></span></p>
+
+<p>SVN上存放了一个Excel文件<strong>A.xlsx</strong>，随时都可以会更新其中的数据。我要用该<strong style="font-size: 13px;">A.xlsx</strong>作为数据源，读取数据并显示在一个web页面上。</p>
+
+<p><span style="font-size:larger;"><strong>原文件路径</strong></span></p>
+
+<p><span style="color:#0000FF;"><a href="http://192.168.81.33:8080/svn/SVN_DB/Sender/doc/wireless5.5/H5" target="_blank">http://192.168.81.33:8080/svn/SVN_DB/Sender/doc/wireless5.5/H5</a> url 跳转相关内容/5.5Hybird跳转URL列表.xlsx</span></p>
+
+<p><strong><span style="font-size:larger;">浏览器编码之后的文件路径</span></strong></p>
+
+<p>可以明确的知道是用了<span style="color:#FF0000;"><strong>UTF-8</strong></span>编码；用<span style="color:#FF0000;"><strong><span style="line-height: 1.2em;">HttpURLConnection</span></strong></span><span style="line-height: 1.2em;">直接访问下面的路径，可以正确的获取到数据。</span></p>
+
+<p><span style="color:#0000FF;"><a href="http://192.168.81.33:8080/svn/SVN_DB/Sender/doc/wireless5.5/H5%20url%20%E8%B7%B3%E8%BD%AC%E7%9B%B8%E5%85%B3%E5%86%85%E5%AE%B9/5.5Hybird%e8%b7%b3%e8%bd%acURL%e5%88%97%e8%a1%a8.xlsx" target="_blank">http://192.168.81.33:8080/svn/SVN_DB/Sender/doc/wireless5.5/H5%20url%20%E8%B7%B3%E8%BD%AC%E7%9B%B8%E5%85%B3%E5%86%85%E5%AE%B9/5.5Hybird%e8%b7%b3%e8%bd%acURL%e5%88%97%e8%a1%a8.xlsx</a></span></p>
+
+<p><strong><span style="font-size:larger;">用Java的URLEncode编码原路径得到的结果如下</span></strong></p>
+
+<p><span style="color: rgb(51, 51, 51); font-family: sans-serif, Arial, Verdana, 'Trebuchet MS'; font-size: 13px; line-height: 20.799999237060547px; background-color: rgb(255, 255, 255);">这里也用了</span><strong><span style="color:#FF0000;"><span style="font-family: sans-serif, Arial, Verdana, 'Trebuchet MS'; font-size: 13px; line-height: 20.799999237060547px; background-color: rgb(255, 255, 255);">UTF-8</span></span></strong><span style="color: rgb(51, 51, 51); font-family: sans-serif, Arial, Verdana, 'Trebuchet MS'; font-size: 13px; line-height: 20.799999237060547px; background-color: rgb(255, 255, 255);">编码；用</span><span style="color:#FF0000;"><strong style="color: rgb(51, 51, 51); font-family: sans-serif, Arial, Verdana, 'Trebuchet MS'; font-size: 13px; line-height: 20.799999237060547px;"><span style="line-height: 1.2em;">HttpURLConnection</span></strong></span><span style="color: rgb(51, 51, 51); font-family: sans-serif, Arial, Verdana, 'Trebuchet MS'; font-size: 13px; line-height: 1.2em;">直接访问下面的路径，返回</span><strong><span style="color:#FF0000;"><span style="font-family: sans-serif, Arial, Verdana, 'Trebuchet MS'; font-size: 13px; line-height: 1.2em;">404</span></span></strong><span style="color: rgb(51, 51, 51); font-family: sans-serif, Arial, Verdana, 'Trebuchet MS'; font-size: 13px; line-height: 1.2em;">&nbsp;</span><a href="http://zh.wikipedia.org/wiki/HTTP_404" style="text-decoration: none; color: rgb(11, 0, 128); background-image: none; font-family: sans-serif; font-size: 14px; font-weight: bold; line-height: 22.399999618530273px;" title="HTTP 404">Not Found</a> <span style="color: rgb(51, 51, 51); font-family: sans-serif, Arial, Verdana, 'Trebuchet MS'; font-size: 13px; line-height: 1.2em;">。</span></p>
+
+<p><span style="color:#0000FF;">http%3A%2F%2F192.168.81.33%3A8080%2Fsvn%2FSVN_DB%2FSender%2Fdoc%2Fwireless5.5%2FH5+url+%E8%B7%B3%E8%BD%AC%E7%9B%B8%E5%85%B3%E5%86%85%E5%AE%B9%2F5.5Hybird%E8%B7%B3%E8%BD%ACURL%E5%88%97%E8%A1%A8.xlsx</span></p>
+
+<p><strong><span style="font-size:larger;">修改方法</span></strong></p>
+
+<p>用编码过后的URL差异看出</p>
+
+<ul>
+<li><span style="color:#696969;">Java的URLEncode对原URL中的&ldquo;:&rdquo;&ldquo;/&rdquo;也做了编码</span><br /></li>
+<li><span style="color:#696969;">另外Java的URLEncode对原URL中的空格编码之后的值是&ldquo;+&rdquo;。而浏览器对URL中空格的编码值是&ldquo;%20&rdquo;；</span><br /></li>
+<li><span style="color:#696969;">经过测试Java的URLEncode对&ldquo;+&rdquo;编码之后的值是%2B</span><br />
+<br /></li>
+</ul>
+
+<p>于是自己实现了如下的Java版的URL编码函数：</p>
+
+<pre class="brush:java;">private String encodeURL(String url,String encode)
+{
+    if(url == null || url.length() &lt;= 0) return null;
+    URL temp;
+    String encodedUrl="";
+    try {
+        temp = new URL(url);
+        encodedUrl += temp.getProtocol();
+        encodedUrl += "://"+temp.getHost()+":";
+        encodedUrl += temp.getPort();
+        String path = temp.getPath();
+        String[] paths = path.split("/");
+        for(String str : paths)
+        {
+            str = URLEncoder.encode(str,encode);
+            encodedUrl += str+"/";
+        }
+    } catch (MalformedURLException e1) {
+        // TODO Auto-generated catch block
+        e1.printStackTrace();
+    } catch (UnsupportedEncodingException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+    return encodedUrl.substring(0,encodedUrl.length()-1).replace("+", "%20");
+}</pre>
+
+<p>&nbsp;</p>
+</div>
+      <hr />
+      <footer class="article-footer">
+        <div class="article-panel-footer article-meta article-footer">
+          <span class="article-meta-left">
+  <ol>
+    
+    <li><a href='//angel.owent.net/categories/%E4%B8%AA%E4%BA%BA%E5%8E%9F%E5%88%9B.html'>个人原创</a></li>
+    
+    <li><a href='//angel.owent.net/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91.html'>编程开发</a></li>
+    
+  </ol>
+</span>
+          <span class="article-meta-right"><time datetime='2014-05-07T03:26:14.000&#43;00:00' itemprop="datePublished">2014-05-07</time></span>
+          <span class="clearfix"></span>
+        </div>
+        
+        
+<div class="article-tags">
+  <ul class="article-tag-list">
+    
+    <li class="article-tag-list-item"><a href='//angel.owent.net/tags/java.html'>java</a></li>
+    
+    <li class="article-tag-list-item"><a href='//angel.owent.net/tags/url.html'>URL</a></li>
+    
+  </ul>
+</div>
+
+      </footer>
+    </div>
+    
+<hr />
+<nav id="article-nav">
+  <ul class="pagination">
+  
+    <li class="page-item">
+      <a class="page-link" id="article-nav-newer" class="article-nav-link-wrap" href='//angel.owent.net/2014/05/xml-scheme%E7%96%91%E7%82%B9%E6%80%BB%E7%BB%93/'>
+        上一篇<strong>XML Scheme疑点总结</strong>
+      </a>
+    </li>
+  
+  
+    <li class="page-item">
+      <a class="page-link" id="article-nav-older" class="article-nav-link-wrap" href='//angel.owent.net/2014/05/%E7%94%A8pac%E8%84%9A%E6%9C%AC%E9%85%8D%E7%BD%AE%E4%BB%A3%E7%90%86/'>
+        下一篇<strong>用PAC脚本配置代理</strong>
+      </a>
+    </li>
+  
+  </ul>
+</nav>
+
+    
+<hr />
+<section id="comments">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+var disqus_config = function () {
+
+this.page.identifier = '201417';
+
+};
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://angel-13.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+  </div>
+</article></div>
+</section></div>
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      <strong id="footer-left">
+        &copy; 2018
+        ANGEL
+        
+        
+      </strong>
+      <strong id="footer-right">
+        
+        
+        发布者 <a href="https://gohugo.io/" target="_blank">Hugo</a>,
+        主题 <a href="https://github.com/owt5008137/hugo-theme-distinctionpp" target="_blank">distinctionpp</a>
+      </strong>
+      <span class="clearfix"></span>
+    </div>
+  </div>
+</footer>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js' crossorigin="anonymous"></script>
+  
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.min.js' crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js'></script>
+
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/capnproto.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/cmake.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/d.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/dos.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/erlang.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/less.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/lua.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/php.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/powershell.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/protobuf.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/profile.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/typescript.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/vim.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/rust.min.js'></script>
+<script type="text/javascript">
+jQuery(function (){
+    jQuery("head").append('<link rel="stylesheet" href="\/\/cdnjs.cloudflare.com\/ajax\/libs\/highlight.js\/9.12.0\/styles\/vs2015.min.css" />');
+    if (window.JSON) {
+        hljs.configure(JSON.parse("{\"languages\":{},\"tabreplace\":\"    \",\"usebr\":false}"));
+    } else {
+        hljs.configure(evel("{\"languages\":{},\"tabreplace\":\"    \",\"usebr\":false}"));
+    }
+    jQuery('pre\x3ecode').each(function(i, block) {
+        try {
+            hljs.highlightBlock(block);
+        } catch (e) {
+            if (window.console) {
+                console.log(e.toString() + "\r\nMaybe can not detect the language");
+            }
+        }
+    });
+});
+</script>
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-19298704-3"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-19298704-3');
+</script>
+
+
+
+
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js'></script>
+<script type="text/javascript">
+jQuery(function(){
+    jQuery("head").append('<link rel="stylesheet" href="\/\/cdnjs.cloudflare.com\/ajax\/libs\/KaTeX\/0.9.0\/katex.min.css" />');
+    renderMathInElement(document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "\\[", right: "\\]", display: true},
+            {left: "\\(", right: "\\)", display: false},
+            {left: "`$", right: "$`", display: false}
+        ],
+        ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    });
+});
+</script>
+
+
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js'></script>
+
+
+</div>
+</body></html>

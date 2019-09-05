@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>java on ANGEL</title>
+    <link>//angel.owent.net/tags/java.html</link>
+    <description>Recent content in java on ANGEL</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <managingEditor>angelg0426@hotmail.com (Angel)</managingEditor>
+    <webMaster>angelg0426@hotmail.com (Angel)</webMaster>
+    <lastBuildDate>Thu, 12 Jun 2014 09:18:30 +0000</lastBuildDate>
+    
+	<atom:link href="//angel.owent.net/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>JAVA-LOG-Common-logging</title>
+      <link>//angel.owent.net/2014/06/java-log-common-logging/</link>
+      <pubDate>Thu, 12 Jun 2014 09:18:30 +0000</pubDate>
+      <author>angelg0426@hotmail.com (Angel)</author>
+      <guid>//angel.owent.net/2014/06/java-log-common-logging/</guid>
+      <description>Common-logging 简介 Common-logging是不同Log系统的一个桥梁。为不同的日志系统提供了一个归一的解决方案。个人能想到的作用和好处有一下几点： 方</description>
+    </item>
+    
+    <item>
+      <title>Java-log-JDK日志管理组件</title>
+      <link>//angel.owent.net/2014/06/jdk%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86%E7%BB%84%E4%BB%B6/</link>
+      <pubDate>Tue, 03 Jun 2014 06:46:37 +0000</pubDate>
+      <author>angelg0426@hotmail.com (Angel)</author>
+      <guid>//angel.owent.net/2014/06/jdk%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86%E7%BB%84%E4%BB%B6/</guid>
+      <description>JDK日志管理组件：java.util.logging,这里只是简单汇总，并介绍个示例详情直接看JDK文档即可： LogManager，存在一</description>
+    </item>
+    
+    <item>
+      <title>Java中的URLEncode</title>
+      <link>//angel.owent.net/2014/05/java%E4%B8%AD%E7%9A%84urlencode/</link>
+      <pubDate>Wed, 07 May 2014 03:26:14 +0000</pubDate>
+      <author>angelg0426@hotmail.com (Angel)</author>
+      <guid>//angel.owent.net/2014/05/java%E4%B8%AD%E7%9A%84urlencode/</guid>
+      <description>应用场景 SVN上存放了一个Excel文件A.xlsx，随时都可以会更新其中的数据。我要用该A.xlsx作为数据源，读取数据并显示在一个web</description>
+    </item>
+    
+  </channel>
+</rss>

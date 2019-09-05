@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>编程开发 on ANGEL</title>
+    <link>//angel.owent.net/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91.html</link>
+    <description>Recent content in 编程开发 on ANGEL</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <managingEditor>angelg0426@hotmail.com (Angel)</managingEditor>
+    <webMaster>angelg0426@hotmail.com (Angel)</webMaster>
+    <lastBuildDate>Wed, 11 Feb 2015 07:18:30 +0000</lastBuildDate>
+    
+	<atom:link href="//angel.owent.net/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>关于python文件操作</title>
+      <link>//angel.owent.net/2015/02/%E5%85%B3%E4%BA%8Epython%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Wed, 11 Feb 2015 07:18:30 +0000</pubDate>
+      <author>angelg0426@hotmail.com (Angel)</author>
+      <guid>//angel.owent.net/2015/02/%E5%85%B3%E4%BA%8Epython%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</guid>
+      <description>原文链接：http://www.cnblogs.com/rollenholt/archive/2012/04/23/2466179.html</description>
+    </item>
+    
+    <item>
+      <title>文件批量编码转换</title>
+      <link>//angel.owent.net/2015/02/%E6%96%87%E4%BB%B6%E6%89%B9%E9%87%8F%E7%BC%96%E7%A0%81%E8%BD%AC%E6%8D%A2/</link>
+      <pubDate>Wed, 11 Feb 2015 07:11:04 +0000</pubDate>
+      <author>angelg0426@hotmail.com (Angel)</author>
+      <guid>//angel.owent.net/2015/02/%E6%96%87%E4%BB%B6%E6%89%B9%E9%87%8F%E7%BC%96%E7%A0%81%E8%BD%AC%E6%8D%A2/</guid>
+      <description>__author__ = &amp;#39;lfGong&amp;#39; import os target_dir = &#34;/Users/lfGong/Desktop/Workspace/ServiceBeanGenerator&#34; # target_dir = &#34;/Users/lfGong/Desktop/src副本&#34; #调用enca指令做编码转换 def convert_utf8(file_name): #此处的utf-8修改为en</description>
+    </item>
+    
+    <item>
+      <title>Android自定义Notification知识总结</title>
+      <link>//angel.owent.net/2014/09/android%E8%87%AA%E5%AE%9A%E4%B9%89notification%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Sun, 28 Sep 2014 10:30:54 +0000</pubDate>
+      <author>angelg0426@hotmail.com (Angel)</author>
+      <guid>//angel.owent.net/2014/09/android%E8%87%AA%E5%AE%9A%E4%B9%89notification%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/</guid>
+      <description>Android推送通知(Notification)相关只是，直接从Android官方开发文档中就可以找到。本文记录的是一些官方开发文档中没有</description>
+    </item>
+    
+    <item>
+      <title>Android解析Xml SAX解析</title>
+      <link>//angel.owent.net/2014/08/android%E8%A7%A3%E6%9E%90xml/</link>
+      <pubDate>Fri, 01 Aug 2014 06:58:46 +0000</pubDate>
+      <author>angelg0426@hotmail.com (Angel)</author>
+      <guid>//angel.owent.net/2014/08/android%E8%A7%A3%E6%9E%90xml/</guid>
+      <description>XML解析方式:SAX与DOM简介 DOM是W3School提供的XML解析方式，其解析方式是将整个XML加载如内存，可以方便的对XML进行增</description>
+    </item>
+    
+    <item>
+      <title>Python语法总结</title>
+      <link>//angel.owent.net/2014/06/python%E8%AF%AD%E6%B3%95%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Mon, 30 Jun 2014 10:15:04 +0000</pubDate>
+      <author>angelg0426@hotmail.com (Angel)</author>
+      <guid>//angel.owent.net/2014/06/python%E8%AF%AD%E6%B3%95%E6%80%BB%E7%BB%93/</guid>
+      <description>#hello world print(&#34;Hello world!&#34;) #基本数据类型 x = int(&#34;32&#34;) print(x) print(type(x)) print(type(&#34;Hello world!&#34;)) arr = &#34;doris&#34;, &#34;angel&#34; print(len(arr)) arr = &#34;teapot&#34;, print(len(arr)) arr = [&#34;angel&#34;, &#34;foo&#34;, &#34;teapot&#34;, 45, 33] print(type(arr), arr[1], type(arr[1]), type(arr[3])) print(len(&#34;automatically&#34;)) arr.append(&#34;doris&#34;) print(arr) a = None print(a is None) # while True: # i = input(&#34;Input a number:&#34;) # try: # i = int(i) # if i == 0: # break #</description>
+    </item>
+    
+    <item>
+      <title>JAVA-LOG-Common-logging</title>
+      <link>//angel.owent.net/2014/06/java-log-common-logging/</link>
+      <pubDate>Thu, 12 Jun 2014 09:18:30 +0000</pubDate>
+      <author>angelg0426@hotmail.com (Angel)</author>
+      <guid>//angel.owent.net/2014/06/java-log-common-logging/</guid>
+      <description>Common-logging 简介 Common-logging是不同Log系统的一个桥梁。为不同的日志系统提供了一个归一的解决方案。个人能想到的作用和好处有一下几点： 方</description>
+    </item>
+    
+    <item>
+      <title>TinyPng-Png图片增量压缩</title>
+      <link>//angel.owent.net/2014/06/tinypng-png%E5%9B%BE%E7%89%87%E5%A2%9E%E9%87%8F%E5%8E%8B%E7%BC%A9/</link>
+      <pubDate>Wed, 11 Jun 2014 05:52:33 +0000</pubDate>
+      <author>angelg0426@hotmail.com (Angel)</author>
+      <guid>//angel.owent.net/2014/06/tinypng-png%E5%9B%BE%E7%89%87%E5%A2%9E%E9%87%8F%E5%8E%8B%E7%BC%A9/</guid>
+      <description>TinyPng简介： &amp;nbsp; &amp;nbsp; TinyPng用了一种有损图片压缩技术来压缩PNG图片的大小。通过选择性地降低图像中颜色的数量,需要更少的字节来存储</description>
+    </item>
+    
+    <item>
+      <title>Java-log-JDK日志管理组件</title>
+      <link>//angel.owent.net/2014/06/jdk%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86%E7%BB%84%E4%BB%B6/</link>
+      <pubDate>Tue, 03 Jun 2014 06:46:37 +0000</pubDate>
+      <author>angelg0426@hotmail.com (Angel)</author>
+      <guid>//angel.owent.net/2014/06/jdk%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86%E7%BB%84%E4%BB%B6/</guid>
+      <description>JDK日志管理组件：java.util.logging,这里只是简单汇总，并介绍个示例详情直接看JDK文档即可： LogManager，存在一</description>
+    </item>
+    
+    <item>
+      <title>Mac常用快捷标示符</title>
+      <link>//angel.owent.net/2014/06/mac%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E6%A0%87%E7%A4%BA%E7%AC%A6/</link>
+      <pubDate>Mon, 02 Jun 2014 04:13:41 +0000</pubDate>
+      <author>angelg0426@hotmail.com (Angel)</author>
+      <guid>//angel.owent.net/2014/06/mac%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E6%A0%87%E7%A4%BA%E7%AC%A6/</guid>
+      <description>&amp;nbsp;：&amp;nbsp;Esc &amp;nbsp;：shift &amp;nbsp;：Ctrl &amp;nbsp;：功能键，即苹果键 &amp;nbsp;：Alt ：回车 其中一</description>
+    </item>
+    
+    <item>
+      <title>Java操作Excel问题总结</title>
+      <link>//angel.owent.net/2014/05/jav%E6%93%8D%E4%BD%9Cexcel%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Thu, 29 May 2014 09:04:17 +0000</pubDate>
+      <author>angelg0426@hotmail.com (Angel)</author>
+      <guid>//angel.owent.net/2014/05/jav%E6%93%8D%E4%BD%9Cexcel%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/</guid>
+      <description>1.POI 简介(摘自百度百科) Apache POI 是用Java编写的免费开源的跨平台的 Java API，Apache POI提供API给Java程式对Microsoft Off</description>
+    </item>
+    
+    <item>
+      <title>Vim基本配置</title>
+      <link>//angel.owent.net/2014/05/vim%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Fri, 23 May 2014 11:43:59 +0000</pubDate>
+      <author>angelg0426@hotmail.com (Angel)</author>
+      <guid>//angel.owent.net/2014/05/vim%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/</guid>
+      <description>Vim为不同的用户做不同的配置。主要的配置包括两个方面：配置项+插件 配置项：.vimrc 文件 参考文档：http://www.cnblogs.</description>
+    </item>
+    
+    <item>
+      <title>XML Scheme疑点总结</title>
+      <link>//angel.owent.net/2014/05/xml-scheme%E7%96%91%E7%82%B9%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Thu, 08 May 2014 03:55:55 +0000</pubDate>
+      <author>angelg0426@hotmail.com (Angel)</author>
+      <guid>//angel.owent.net/2014/05/xml-scheme%E7%96%91%E7%82%B9%E6%80%BB%E7%BB%93/</guid>
+      <description>XMl Scheme学习地址：http://www.w3school.com.cn/schema/index.asp XML Scheme示例 target</description>
+    </item>
+    
+    <item>
+      <title>Java中的URLEncode</title>
+      <link>//angel.owent.net/2014/05/java%E4%B8%AD%E7%9A%84urlencode/</link>
+      <pubDate>Wed, 07 May 2014 03:26:14 +0000</pubDate>
+      <author>angelg0426@hotmail.com (Angel)</author>
+      <guid>//angel.owent.net/2014/05/java%E4%B8%AD%E7%9A%84urlencode/</guid>
+      <description>应用场景 SVN上存放了一个Excel文件A.xlsx，随时都可以会更新其中的数据。我要用该A.xlsx作为数据源，读取数据并显示在一个web</description>
+    </item>
+    
+    <item>
+      <title>用PAC脚本配置代理</title>
+      <link>//angel.owent.net/2014/05/%E7%94%A8pac%E8%84%9A%E6%9C%AC%E9%85%8D%E7%BD%AE%E4%BB%A3%E7%90%86/</link>
+      <pubDate>Mon, 05 May 2014 05:23:28 +0000</pubDate>
+      <author>angelg0426@hotmail.com (Angel)</author>
+      <guid>//angel.owent.net/2014/05/%E7%94%A8pac%E8%84%9A%E6%9C%AC%E9%85%8D%E7%BD%AE%E4%BB%A3%E7%90%86/</guid>
+      <description>手动配置代理 手动配置代理只能为所有内容制定唯一的一个代理。不支持故障转移，而且在大的组织中，给管理和维护带来麻烦。需要修改代理的时候，重新为</description>
+    </item>
+    
+    <item>
+      <title>Http/Servlet (三)-一些关于TCP的概念</title>
+      <link>//angel.owent.net/2014/04/httpservlet-%E4%B8%89-%E4%B8%80%E4%BA%9B%E5%85%B3%E4%BA%8Etcp%E7%9A%84%E6%A6%82%E5%BF%B5/</link>
+      <pubDate>Fri, 18 Apr 2014 05:43:18 +0000</pubDate>
+      <author>angelg0426@hotmail.com (Angel)</author>
+      <guid>//angel.owent.net/2014/04/httpservlet-%E4%B8%89-%E4%B8%80%E4%BA%9B%E5%85%B3%E4%BA%8Etcp%E7%9A%84%E6%A6%82%E5%BF%B5/</guid>
+      <description>&amp;nbsp; &amp;nbsp;一点唠叨，感觉学习编程就像一个坑，要进这个坑的们还挺难，进来了之后更加会发现这是一个无底的坑。喜欢的人会在这掉进去的一路上看到</description>
+    </item>
+    
+    <item>
+      <title>Http/Servlet (二)-HTTP函数及HttpServlet实现</title>
+      <link>//angel.owent.net/2014/04/httpservlet-%E4%BA%8C-http%E5%87%BD%E6%95%B0%E5%8F%8Ahttpservlet%E5%AE%9E%E7%8E%B0/</link>
+      <pubDate>Mon, 14 Apr 2014 08:00:14 +0000</pubDate>
+      <author>angelg0426@hotmail.com (Angel)</author>
+      <guid>//angel.owent.net/2014/04/httpservlet-%E4%BA%8C-http%E5%87%BD%E6%95%B0%E5%8F%8Ahttpservlet%E5%AE%9E%E7%8E%B0/</guid>
+      <description>&amp;nbsp; &amp;nbsp; 有没有发现写了好久的网站了，写了无数的Controller、Action了，却还不是很清楚doGet、doPost到底是怎么回事儿？还不</description>
+    </item>
+    
+    <item>
+      <title>Http/Servlet (一)-URL</title>
+      <link>//angel.owent.net/2014/04/httpservlet-%E4%B8%80-url/</link>
+      <pubDate>Mon, 14 Apr 2014 07:16:53 +0000</pubDate>
+      <author>angelg0426@hotmail.com (Angel)</author>
+      <guid>//angel.owent.net/2014/04/httpservlet-%E4%B8%80-url/</guid>
+      <description>&amp;nbsp; 本文从最普遍，很陌生，交神秘，又既简单的URL说起。 &amp;nbsp;&amp;nbsp;URI（Uniform Resource Identity），统一资源标识符。是</description>
+    </item>
+    
+    <item>
+      <title>浅谈android的selector，背景选择器</title>
+      <link>//angel.owent.net/2014/03/%E6%B5%85%E8%B0%88android%E7%9A%84selector%E8%83%8C%E6%99%AF%E9%80%89%E6%8B%A9%E5%99%A8/</link>
+      <pubDate>Wed, 05 Mar 2014 08:41:54 +0000</pubDate>
+      <author>angelg0426@hotmail.com (Angel)</author>
+      <guid>//angel.owent.net/2014/03/%E6%B5%85%E8%B0%88android%E7%9A%84selector%E8%83%8C%E6%99%AF%E9%80%89%E6%8B%A9%E5%99%A8/</guid>
+      <description>原文链接：http://blog.csdn.net/jrcisme/article/details/6444653 关于listview和bu</description>
+    </item>
+    
+    <item>
+      <title>值得学习的Android资源命名规范</title>
+      <link>//angel.owent.net/2014/03/%E5%80%BC%E5%BE%97%E5%AD%A6%E4%B9%A0%E7%9A%84android%E8%B5%84%E6%BA%90%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/</link>
+      <pubDate>Wed, 05 Mar 2014 08:37:57 +0000</pubDate>
+      <author>angelg0426@hotmail.com (Angel)</author>
+      <guid>//angel.owent.net/2014/03/%E5%80%BC%E5%BE%97%E5%AD%A6%E4%B9%A0%E7%9A%84android%E8%B5%84%E6%BA%90%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/</guid>
+      <description>原文链接：http://mikewang.blog.51cto.com/3826268/1020693 Android资源命名规范 最近几个月，</description>
+    </item>
+    
+    <item>
+      <title>7种形式的Android Dialog使用举例</title>
+      <link>//angel.owent.net/2014/03/7%E7%A7%8D%E5%BD%A2%E5%BC%8F%E7%9A%84android-dialog%E4%BD%BF%E7%94%A8%E4%B8%BE%E4%BE%8B/</link>
+      <pubDate>Wed, 05 Mar 2014 08:36:03 +0000</pubDate>
+      <author>angelg0426@hotmail.com (Angel)</author>
+      <guid>//angel.owent.net/2014/03/7%E7%A7%8D%E5%BD%A2%E5%BC%8F%E7%9A%84android-dialog%E4%BD%BF%E7%94%A8%E4%B8%BE%E4%BE%8B/</guid>
+      <description>原文链接:http://www.oschina.net/question/54100_32486#answers 在Android开发中，我们</description>
+    </item>
+    
+    <item>
+      <title>CSS3实践中学习</title>
+      <link>//angel.owent.net/2014/01/css3%E5%AE%9E%E8%B7%B5%E4%B8%AD%E5%AD%A6%E4%B9%A0/</link>
+      <pubDate>Mon, 27 Jan 2014 11:08:36 +0000</pubDate>
+      <author>angelg0426@hotmail.com (Angel)</author>
+      <guid>//angel.owent.net/2014/01/css3%E5%AE%9E%E8%B7%B5%E4%B8%AD%E5%AD%A6%E4%B9%A0/</guid>
+      <description>&amp;lt;/td&amp;gt; &amp;lt;td&amp;gt; &amp;lt;div id=&amp;quot;div2&amp;quot;&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/td&amp;gt; &amp;lt;td&amp;gt; &amp;lt;div id=&amp;quot;div4&amp;quot;&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/td&amp;gt;</description>
+    </item>
+    
+    <item>
+      <title>Html标签textarea长宽属性设置</title>
+      <link>//angel.owent.net/2014/01/html%E9%95%BF%E6%AC%BE%E5%B1%9E%E6%80%A7%E8%AE%BE%E7%BD%AE/</link>
+      <pubDate>Thu, 23 Jan 2014 10:10:07 +0000</pubDate>
+      <author>angelg0426@hotmail.com (Angel)</author>
+      <guid>//angel.owent.net/2014/01/html%E9%95%BF%E6%AC%BE%E5%B1%9E%E6%80%A7%E8%AE%BE%E7%BD%AE/</guid>
+      <description>textarea 用rows 和 cols 设置长宽 &amp;lt;textarea id=&#34;requestJson&#34; rows=&#34;30&#34; cols=&#34;140&#34; wrap=&#34;off&#34;&amp;gt;</description>
+    </item>
+    
+    <item>
+      <title>两个列表内容的比较</title>
+      <link>//angel.owent.net/2013/09/%E5%88%97%E4%B8%AA%E5%88%97%E8%A1%A8%E5%86%85%E5%AE%B9%E7%9A%84%E6%AF%94%E8%BE%83/</link>
+      <pubDate>Mon, 30 Sep 2013 03:48:21 +0000</pubDate>
+      <author>angelg0426@hotmail.com (Angel)</author>
+      <guid>//angel.owent.net/2013/09/%E5%88%97%E4%B8%AA%E5%88%97%E8%A1%A8%E5%86%85%E5%AE%B9%E7%9A%84%E6%AF%94%E8%BE%83/</guid>
+      <description>最近的工作内容，总是比较来比较去的。写了两个比较用的工具，发现用的最多的尽然是这样一个结构。我这里把它单独抽了出来。做了一点点的抽象： public void listContentCompare(List&amp;lt;Object&amp;gt;</description>
+    </item>
+    
+  </channel>
+</rss>

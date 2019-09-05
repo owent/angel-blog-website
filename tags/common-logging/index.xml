@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>common-logging on ANGEL</title>
+    <link>//angel.owent.net/tags/common-logging.html</link>
+    <description>Recent content in common-logging on ANGEL</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <managingEditor>angelg0426@hotmail.com (Angel)</managingEditor>
+    <webMaster>angelg0426@hotmail.com (Angel)</webMaster>
+    <lastBuildDate>Thu, 12 Jun 2014 09:18:30 +0000</lastBuildDate>
+    
+	<atom:link href="//angel.owent.net/tags/common-logging/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>JAVA-LOG-Common-logging</title>
+      <link>//angel.owent.net/2014/06/java-log-common-logging/</link>
+      <pubDate>Thu, 12 Jun 2014 09:18:30 +0000</pubDate>
+      <author>angelg0426@hotmail.com (Angel)</author>
+      <guid>//angel.owent.net/2014/06/java-log-common-logging/</guid>
+      <description>Common-logging 简介 Common-logging是不同Log系统的一个桥梁。为不同的日志系统提供了一个归一的解决方案。个人能想到的作用和好处有一下几点： 方</description>
+    </item>
+    
+  </channel>
+</rss>

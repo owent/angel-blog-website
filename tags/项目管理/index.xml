@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>项目管理 on ANGEL</title>
+    <link>//angel.owent.net/tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86.html</link>
+    <description>Recent content in 项目管理 on ANGEL</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <managingEditor>angelg0426@hotmail.com (Angel)</managingEditor>
+    <webMaster>angelg0426@hotmail.com (Angel)</webMaster>
+    <lastBuildDate>Thu, 13 Apr 2017 03:13:21 +0000</lastBuildDate>
+    
+	<atom:link href="//angel.owent.net/tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>IT项目管理的目标</title>
+      <link>//angel.owent.net/2017/04/it%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E7%9A%84%E7%9B%AE%E6%A0%87/</link>
+      <pubDate>Thu, 13 Apr 2017 03:13:21 +0000</pubDate>
+      <author>angelg0426@hotmail.com (Angel)</author>
+      <guid>//angel.owent.net/2017/04/it%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E7%9A%84%E7%9B%AE%E6%A0%87/</guid>
+      <description>知止而后有定，定而后能静，静而后能安，安而后能虑，虑而后能得。这是《大学》中解决问题的思路。 意思是在我们想要做一件事情之前，先要搞清楚要达到</description>
+    </item>
+    
+  </channel>
+</rss>

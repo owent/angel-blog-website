@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C# on ANGEL</title>
+    <link>//angel.owent.net/tags/c#.html</link>
+    <description>Recent content in C# on ANGEL</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <managingEditor>angelg0426@hotmail.com (Angel)</managingEditor>
+    <webMaster>angelg0426@hotmail.com (Angel)</webMaster>
+    <lastBuildDate>Wed, 11 Jun 2014 05:52:33 +0000</lastBuildDate>
+    
+	<atom:link href="//angel.owent.net/tags/c#/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>TinyPng-Png图片增量压缩</title>
+      <link>//angel.owent.net/2014/06/tinypng-png%E5%9B%BE%E7%89%87%E5%A2%9E%E9%87%8F%E5%8E%8B%E7%BC%A9/</link>
+      <pubDate>Wed, 11 Jun 2014 05:52:33 +0000</pubDate>
+      <author>angelg0426@hotmail.com (Angel)</author>
+      <guid>//angel.owent.net/2014/06/tinypng-png%E5%9B%BE%E7%89%87%E5%A2%9E%E9%87%8F%E5%8E%8B%E7%BC%A9/</guid>
+      <description>TinyPng简介： &amp;nbsp; &amp;nbsp; TinyPng用了一种有损图片压缩技术来压缩PNG图片的大小。通过选择性地降低图像中颜色的数量,需要更少的字节来存储</description>
+    </item>
+    
+  </channel>
+</rss>

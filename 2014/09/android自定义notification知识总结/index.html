@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  
+  
+  <meta charset="utf-8" />
+  <title>Android自定义Notification知识总结|ANGEL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="canonical" href="//angel.owent.net/2014/09/android%E8%87%AA%E5%AE%9A%E4%B9%89notification%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/">
+  <link href="//angel.owent.net/index.xml" rel="alternate" type="application/rss+xml" title="ANGEL" />
+  
+  <link rel="icon" href='../../../favicon.ico' />
+  
+  
+  <link rel="stylesheet" href='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css' crossorigin="anonymous" />
+  
+  <link rel="stylesheet" href='//angel.owent.net/css/style.css' />
+
+  
+  <script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js' crossorigin="anonymous"></script>
+  
+  
+  
+</head>
+<body><div id="container"><div id="wrap">
+<header id="header">
+  <div id="banner"></div>
+  <div id="header-outer">
+    <div id="header-title">
+      <h1 id="site-title">
+        <a href="//angel.owent.net" id="logo">ANGEL</a>
+      </h1>
+      
+      <h2 id="site-description">Living for the here and now</h2>
+      
+    </div>
+    <div id="header-inner">
+      <nav id="main-nav" class="navbar navbar-expand-md navbar-dark">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#main-nav-links" aria-controls="main-nav-links" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a id="main-nav-brand" class="navbar-brand collapse" href="#">#</a>
+        <div class="collapse navbar-collapse" id="main-nav-links">
+          <ul class="navbar-nav mr-auto">
+            
+              
+                <li class="nav-item"><a class="nav-link" href="../../../" title='Home'>Home</a></li>
+              
+                <li class="nav-item"><a class="nav-link" href="../../../archives.html" title='Archives'>Archives</a></li>
+              
+            
+            <li class="nav-item"><a id="nav-rss-link" class="nav-link" href="//angel.owent.net/index.xml" title='RSS订阅'>RSS订阅</a></li>
+          </ul>
+          
+          <form class="form-inline" method="get" accept-charset="UTF-8" action='//www.bing.com/search'>
+            <input type="hidden" name='q1' value='site:angel.owent.net' />
+            <input class="form-control" type="text" placeholder='搜索' name='q' />
+            <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">搜索</button>
+          </form>
+          
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+<div id="main"><section id="main-content">
+<div id="post-content"><article id="post-cd3144544da019b018a1dc51f9a84c42" class="article-panel article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-panel-inner article-inner">
+    <div class="article-inner">
+      <header class="article-header"><h1 itemprop="name"><a class='article-title' href="//angel.owent.net/2014/09/android%E8%87%AA%E5%AE%9A%E4%B9%89notification%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" target="_blank" itemprop="url">Android自定义Notification知识总结</a></h1></header><hr />
+      
+      <div class="article-entry" itemprop="articleBody"><p>Android推送通知(Notification)相关只是，直接从Android官方开发文档中就可以找到。本文记录的是一些官方开发文档中没有记录到的，但本人在开发过程中遇到的问题。</p>
+
+<p>基本思路：推送是应用公用的通用空间，需要尽可能通用化。自定义RemoteViews,用接受到的json数据来填充要显示的内容，将所有事件用Broadcast发送出去。下面一件件来说明这个过程中遇到的问题，极其对应的解决方案。</p>
+
+<p>1.&nbsp;<span style="line-height: 20.7999992370605px;">RemoteViews的自定义，虽然PM的要求通常可能会有些天马行空，但是实现的时候还是需要尽量做到简洁，实现同样的功能，没有BUG的理想情况下，总归是代码的行数呈现了其质量</span></p>
+
+<p><span style="line-height: 20.7999992370605px;">2. 下面这种Notification的实现，一般可能需要定义两个RemoteViews。因为这种信息可以合并起来。合并起来的时候和系统自带的差不多。其实就是两个RemoteViews之间的切换。收起来的时候显示contentView,展开之后显示的是bigContentView</span></p>
+
+<p><img href="https://angel.owent.net/wp-content/uploads/2014/09/notification-0.png" /><br />
+<img alt="notification-0" class="alignnone size-medium wp-image-382" height="150" src="https://angel.owent.net/wp-content/uploads/2014/09/notification-0-300x150.png" width="300" srcset="https://angel.owent.net/wp-content/uploads/2014/09/notification-0-300x150.png 300w, https://angel.owent.net/wp-content/uploads/2014/09/notification-0.png 476w" sizes="(max-width: 300px) 100vw, 300px" /></p>
+
+<pre class="brush:java;">notify.contentView 
+notify.bigContentView</pre>
+
+<ol>
+<li>显示丰富色彩的TextView，方案不只一种，但根据自己的喜好，简单方便程度我选择了用Html来标记色彩的方式<br />
+<br /></li>
+</ol>
+
+<pre class="brush:xml;">&lt;html&gt;
+    &lt;body&gt;
+        &lt;p&gt;&lt;font color=\"#80d9ff\"&gt;蓝色&lt;/font&gt;标题的推送消息&lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</pre>
+
+<pre class="brush:java;">Html.fromHtml(this.title)</pre>
+
+<p>4.&nbsp;<span style="line-height: 20.7999992370605px;">RemoteViews中的元素上添加事件，因为推送是公用的，所以事件具体要处理的内容也是不固定的。所以我选择了将事件以广播的方式发送出去。这里有一点需要注意的是，RemoteViews中元素上添加事件发送广播，广播的Intent必须用</span><span style="color: rgb(75, 75, 75); font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: 13px; line-height: 19.5px; background-color: rgb(255, 255, 255);">Component指定接收类的class，否则广播无法发送成功。</span></p>
+
+<pre class="brush:java;">Intent intent = new Intent(context, NotificationReceiver.class);
+intent.setAction("com.android.view.receiver.NotificationReceiver");
+intent.setData(Uri.parse(action));
+intent.putExtra("notifyId", notifyId);
+
+PendingIntent pendingIntent = PendingIntent.getBroadcast(context, (int) (System.currentTimeMillis() % Integer.MAX_VALUE), intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        notify.contentView.setOnClickPendingIntent(R.id.notify_button, pendingIntent);</pre>
+
+<ol>
+<li><p>自定义的推送在点击View内部控件的事件之后，通知不会自动消失，需要手动控制，我的处理方式是把推送的id通过intent的putExtra传递给事件处理Reciver</p></li>
+
+<li><p>通知栏不自动收起的问题，解决方法分两步：添加状态栏控制权限；用代码控制状态栏收起</p></li>
+</ol>
+
+<pre class="brush:xml;">&lt;uses-permission android:name="android.permission.EXPAND_STATUS_BAR"/&gt;</pre>
+
+<pre class="brush:java;">/**
+     * Collapse status panel
+     * 
+     * @param context
+     *            the context used to fetch status bar manager
+     */
+     public static void collapseStatusBar(Context context) {
+        try {
+            Object statusBarManager = context.getSystemService("statusbar");
+            Method collapse;
+
+            if (Build.VERSION.SDK_INT &lt;= 16) {
+                collapse = statusBarManager.getClass().getMethod("collapse");
+            } else {
+                collapse = statusBarManager.getClass().getMethod("collapsePanels");
+            }
+            collapse.invoke(statusBarManager);
+        } catch (Exception localException) {
+            localException.printStackTrace();
+        }
+    }</pre>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+</div>
+      <hr />
+      <footer class="article-footer">
+        <div class="article-panel-footer article-meta article-footer">
+          <span class="article-meta-left">
+  <ol>
+    
+    <li><a href='//angel.owent.net/categories/android.html'>Android</a></li>
+    
+    <li><a href='//angel.owent.net/categories/%E4%B8%AA%E4%BA%BA%E5%8E%9F%E5%88%9B.html'>个人原创</a></li>
+    
+    <li><a href='//angel.owent.net/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91.html'>编程开发</a></li>
+    
+  </ol>
+</span>
+          <span class="article-meta-right"><time datetime='2014-09-28T10:30:54.000&#43;00:00' itemprop="datePublished">2014-09-28</time></span>
+          <span class="clearfix"></span>
+        </div>
+        
+        
+      </footer>
+    </div>
+    
+<hr />
+<nav id="article-nav">
+  <ul class="pagination">
+  
+    <li class="page-item">
+      <a class="page-link" id="article-nav-newer" class="article-nav-link-wrap" href='//angel.owent.net/2014/09/android%E5%8A%A8%E7%94%BB/'>
+        上一篇<strong>Android动画</strong>
+      </a>
+    </li>
+  
+  
+    <li class="page-item">
+      <a class="page-link" id="article-nav-older" class="article-nav-link-wrap" href='//angel.owent.net/2014/08/android%E8%A7%A3%E6%9E%90xml/'>
+        下一篇<strong>Android解析Xml SAX解析</strong>
+      </a>
+    </li>
+  
+  </ul>
+</nav>
+
+    
+<hr />
+<section id="comments">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+var disqus_config = function () {
+
+this.page.identifier = '201430';
+
+};
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://angel-13.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+  </div>
+</article></div>
+</section></div>
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      <strong id="footer-left">
+        &copy; 2018
+        ANGEL
+        
+        
+      </strong>
+      <strong id="footer-right">
+        
+        
+        发布者 <a href="https://gohugo.io/" target="_blank">Hugo</a>,
+        主题 <a href="https://github.com/owt5008137/hugo-theme-distinctionpp" target="_blank">distinctionpp</a>
+      </strong>
+      <span class="clearfix"></span>
+    </div>
+  </div>
+</footer>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js' crossorigin="anonymous"></script>
+  
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.min.js' crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js'></script>
+
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/capnproto.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/cmake.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/d.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/dos.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/erlang.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/less.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/lua.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/php.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/powershell.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/protobuf.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/profile.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/typescript.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/vim.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/rust.min.js'></script>
+<script type="text/javascript">
+jQuery(function (){
+    jQuery("head").append('<link rel="stylesheet" href="\/\/cdnjs.cloudflare.com\/ajax\/libs\/highlight.js\/9.12.0\/styles\/vs2015.min.css" />');
+    if (window.JSON) {
+        hljs.configure(JSON.parse("{\"languages\":{},\"tabreplace\":\"    \",\"usebr\":false}"));
+    } else {
+        hljs.configure(evel("{\"languages\":{},\"tabreplace\":\"    \",\"usebr\":false}"));
+    }
+    jQuery('pre\x3ecode').each(function(i, block) {
+        try {
+            hljs.highlightBlock(block);
+        } catch (e) {
+            if (window.console) {
+                console.log(e.toString() + "\r\nMaybe can not detect the language");
+            }
+        }
+    });
+});
+</script>
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-19298704-3"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-19298704-3');
+</script>
+
+
+
+
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js'></script>
+<script type="text/javascript">
+jQuery(function(){
+    jQuery("head").append('<link rel="stylesheet" href="\/\/cdnjs.cloudflare.com\/ajax\/libs\/KaTeX\/0.9.0\/katex.min.css" />');
+    renderMathInElement(document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "\\[", right: "\\]", display: true},
+            {left: "\\(", right: "\\)", display: false},
+            {left: "`$", right: "$`", display: false}
+        ],
+        ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    });
+});
+</script>
+
+
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js'></script>
+
+
+</div>
+</body></html>

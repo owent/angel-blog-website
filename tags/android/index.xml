@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Android on ANGEL</title>
+    <link>//angel.owent.net/tags/android.html</link>
+    <description>Recent content in Android on ANGEL</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <managingEditor>angelg0426@hotmail.com (Angel)</managingEditor>
+    <webMaster>angelg0426@hotmail.com (Angel)</webMaster>
+    <lastBuildDate>Wed, 05 Mar 2014 08:41:54 +0000</lastBuildDate>
+    
+	<atom:link href="//angel.owent.net/tags/android/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>浅谈android的selector，背景选择器</title>
+      <link>//angel.owent.net/2014/03/%E6%B5%85%E8%B0%88android%E7%9A%84selector%E8%83%8C%E6%99%AF%E9%80%89%E6%8B%A9%E5%99%A8/</link>
+      <pubDate>Wed, 05 Mar 2014 08:41:54 +0000</pubDate>
+      <author>angelg0426@hotmail.com (Angel)</author>
+      <guid>//angel.owent.net/2014/03/%E6%B5%85%E8%B0%88android%E7%9A%84selector%E8%83%8C%E6%99%AF%E9%80%89%E6%8B%A9%E5%99%A8/</guid>
+      <description>原文链接：http://blog.csdn.net/jrcisme/article/details/6444653 关于listview和bu</description>
+    </item>
+    
+    <item>
+      <title>值得学习的Android资源命名规范</title>
+      <link>//angel.owent.net/2014/03/%E5%80%BC%E5%BE%97%E5%AD%A6%E4%B9%A0%E7%9A%84android%E8%B5%84%E6%BA%90%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/</link>
+      <pubDate>Wed, 05 Mar 2014 08:37:57 +0000</pubDate>
+      <author>angelg0426@hotmail.com (Angel)</author>
+      <guid>//angel.owent.net/2014/03/%E5%80%BC%E5%BE%97%E5%AD%A6%E4%B9%A0%E7%9A%84android%E8%B5%84%E6%BA%90%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/</guid>
+      <description>原文链接：http://mikewang.blog.51cto.com/3826268/1020693 Android资源命名规范 最近几个月，</description>
+    </item>
+    
+  </channel>
+</rss>

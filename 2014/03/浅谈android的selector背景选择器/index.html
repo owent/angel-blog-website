@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  
+  
+  <meta charset="utf-8" />
+  <title>浅谈android的selector，背景选择器|ANGEL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="canonical" href="//angel.owent.net/2014/03/%E6%B5%85%E8%B0%88android%E7%9A%84selector%E8%83%8C%E6%99%AF%E9%80%89%E6%8B%A9%E5%99%A8/">
+  <link href="//angel.owent.net/index.xml" rel="alternate" type="application/rss+xml" title="ANGEL" />
+  
+  <link rel="icon" href='../../../favicon.ico' />
+  
+  
+  <link rel="stylesheet" href='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css' crossorigin="anonymous" />
+  
+  <link rel="stylesheet" href='//angel.owent.net/css/style.css' />
+
+  
+  <script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js' crossorigin="anonymous"></script>
+  
+  
+  
+</head>
+<body><div id="container"><div id="wrap">
+<header id="header">
+  <div id="banner"></div>
+  <div id="header-outer">
+    <div id="header-title">
+      <h1 id="site-title">
+        <a href="//angel.owent.net" id="logo">ANGEL</a>
+      </h1>
+      
+      <h2 id="site-description">Living for the here and now</h2>
+      
+    </div>
+    <div id="header-inner">
+      <nav id="main-nav" class="navbar navbar-expand-md navbar-dark">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#main-nav-links" aria-controls="main-nav-links" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a id="main-nav-brand" class="navbar-brand collapse" href="#">#</a>
+        <div class="collapse navbar-collapse" id="main-nav-links">
+          <ul class="navbar-nav mr-auto">
+            
+              
+                <li class="nav-item"><a class="nav-link" href="../../../" title='Home'>Home</a></li>
+              
+                <li class="nav-item"><a class="nav-link" href="../../../archives.html" title='Archives'>Archives</a></li>
+              
+            
+            <li class="nav-item"><a id="nav-rss-link" class="nav-link" href="//angel.owent.net/index.xml" title='RSS订阅'>RSS订阅</a></li>
+          </ul>
+          
+          <form class="form-inline" method="get" accept-charset="UTF-8" action='//www.bing.com/search'>
+            <input type="hidden" name='q1' value='site:angel.owent.net' />
+            <input class="form-control" type="text" placeholder='搜索' name='q' />
+            <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">搜索</button>
+          </form>
+          
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+<div id="main"><section id="main-content">
+<div id="post-content"><article id="post-b19c7641629a1a9f00a9ecc84af1b8f7" class="article-panel article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-panel-inner article-inner">
+    <div class="article-inner">
+      <header class="article-header"><h1 itemprop="name"><a class='article-title' href="//angel.owent.net/2014/03/%E6%B5%85%E8%B0%88android%E7%9A%84selector%E8%83%8C%E6%99%AF%E9%80%89%E6%8B%A9%E5%99%A8/" target="_blank" itemprop="url">浅谈android的selector，背景选择器</a></h1></header><hr />
+      
+      <div class="article-entry" itemprop="articleBody"><p><span style="font-family: Arial; line-height: 25.99431800842285px; font-size: medium;">原文链接：</span><a href="http://blog.csdn.net/jrcisme/article/details/6444653" target="_blank">http://blog.csdn.net/jrcisme/article/details/6444653</a></p>
+
+<p><span style="font-family: Arial; line-height: 25.99431800842285px; font-size: medium;">关于listview和button都要改变android原来控件的背景，在网上查找了一些资料不是很全，所以现在总结一下android的selector的用法。<br /> 首先android的selector是在drawable/xxx.xml中配置的。<br /> <span style="color: rgb(255, 0, 0);">先看一下listview中的状态：</span><br /> 把下面的XML文件保存成你自己命名的.xml文件（比如list_item_bg.xml），在系统使用时根据ListView中的列表项的状态来使用相应的背景图片。<br /> <span style="color: rgb(255, 0, 0);">drawable/list_item_bg.xml</span><br /> &lt;?xml version=&ldquo;1.0&rdquo; encoding=&ldquo;utf-8&rdquo; ?&gt;&nbsp; &nbsp;<br /> <selector xmlns:android="http://schemas.android.com/apk/res/android">&nbsp;<br /> &lt;!&#8211; 默认时的背景图片 &#8211;&gt;&nbsp;&nbsp;<br /> &nbsp;&nbsp;<item android:drawable="@drawable/pic1" />&nbsp; &nbsp;&nbsp;<br /> &lt;!&#8211; 没有焦点时的背景图片 &#8211;&gt;&nbsp;&nbsp;<br /> &nbsp;&nbsp;<item android:state_window_focused="false"&nbsp; &nbsp;<br /> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;android:drawable=&ldquo;@drawable/pic1&rdquo; /&gt;&nbsp; &nbsp;<br /> &lt;!&#8211; 非触摸模式下获得焦点并单击时的背景图片 &#8211;&gt;&nbsp;&nbsp;<br /> &nbsp;&nbsp;<item android:state_focused="true" android:state_pressed="true"&nbsp; &nbsp;<br /> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;android:drawable= &ldquo;@drawable/pic2&rdquo; /&gt;&nbsp;&nbsp;<br /> &lt;!&#8211; 触摸模式下单击时的背景图片 &#8211;&gt;&nbsp;&nbsp;<br /> &nbsp;&nbsp;<item android:state_focused="false" android:state_pressed="true"&nbsp; &nbsp;<br /> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;android:drawable=&ldquo;@drawable/pic3&rdquo; /&gt;&nbsp; &nbsp;<br /> &lt;!&#8211;选中时的图片背景&nbsp;&nbsp;&#8211;&gt;&nbsp;&nbsp;<br /> &nbsp;&nbsp;<item android:state_selected="true"&nbsp; &nbsp;<br /> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;android:drawable=&ldquo;@drawable/pic4&rdquo; /&gt;&nbsp; &nbsp;<br /> &lt;!&#8211;获得焦点时的图片背景&nbsp;&nbsp;&#8211;&gt;&nbsp;&nbsp;<br /> &nbsp;&nbsp;<item android:state_focused="true"&nbsp; &nbsp;<br /> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;android:drawable=&ldquo;@drawable/pic5&rdquo; /&gt;&nbsp; &nbsp;<br /> </selector><br /> 使用些xml文件：第一种是在listview中配置android:listSelector=&ldquo;@drawable/<span style="color: rgb(255, 0, 0);">list_item_bg</span><br /> 或者在listview的item中添加属性android：background=&ldquo;@drawable/<span style="color: rgb(255, 0, 0);">list_item_bg</span>&ldquo;即可实现，或者在java代码中使用：Drawable drawable = getResources().getDrawable(R.drawable.<span style="color: rgb(255, 0, 0);">list_item_bg</span>);&nbsp;&nbsp;<br /> &nbsp; &nbsp;&nbsp; &nbsp; ListView.setSelector(drawable);同样的效果。<br /> 但是这样会出现列表有时候为黑的情况，需要加上：<span style="color: rgb(255, 0, 0);">android:cacheColorHint=&ldquo;@android:color/transparent&rdquo;<br /> <span style="color: rgb(0, 0, 0);">使其透明。</span><br /> 其次再来看看Button的一些背景效果：</span><br /> android:state_selected是选中<br /> android:state_focused是获得焦点<br /> android:state_pressed是点击<br /> android:state_enabled是设置是否响应事件,指所有事件<br /> 根据这些状态同样可以设置button的selector效果。也可以设置selector改变button中的文字状态。<br /> 以下就是配置button中的文字效果：<br /> <span style="color: rgb(255, 0, 0);">drawable/</span><span style="color: rgb(255, 0, 0);">button_font.xml</span><br /> &lt;?xml version=&ldquo;1.0&rdquo; encoding=&ldquo;utf-8&rdquo;?&gt;<br /> <selector xmlns:android="http://schemas.android.com/apk/res/android"><br /> &nbsp; &nbsp; <item android:state_selected="true" android:color="#FFF" /><br /> &nbsp; &nbsp; <item android:state_focused="true" android:color="#FFF" /><br /> &nbsp; &nbsp; <item android:state_pressed="true" android:color="#FFF" /><br /> &nbsp; &nbsp; <item android:color="#000" /><br /> </selector><br /> Button还可以实现更复杂的效果，例如渐变啊等等。<br /> <span style="color: rgb(255, 0, 0);">drawable/</span><span style="color: rgb(255, 0, 0);">button_color.xml</span><br /> &lt;?xml version=&ldquo;1.0&rdquo; encoding=&ldquo;utf-8&rdquo;?&gt;<br /> <selector xmlns:android="http://schemas.android.com/apk/res/android">&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;/&nbsp;<br /> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<item android:state_pressed="true">//定义当button 处于pressed 状态时的形态。&nbsp;<br /> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<shape>&nbsp;<br /> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;<gradient&nbsp;&nbsp;android:startColor="#8600ff" />&nbsp;<br /> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; <stroke&nbsp; &nbsp;android:width="2dp" android:color="#000000" />&nbsp;<br /> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<corners android:radius="5dp" />&nbsp;&nbsp;<br /> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<padding android:left="10dp" android:top="10dp"&nbsp;<br /> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;android:bottom=&ldquo;10dp&rdquo; android:right=&ldquo;10dp&rdquo;/&gt;&nbsp;&nbsp;<br /> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</shape>&nbsp;<br /> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</item>&nbsp;<br /> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<item android:state_focused="true">//定义当button获得 focus时的形态&nbsp;<br /> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<shape>&nbsp;<br /> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<gradient android:startColor="#eac100"/>&nbsp;<br /> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;<stroke android:width="2dp" android:color="#333333"&nbsp;&nbsp;color="#ffffff"/>&nbsp;<br /> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; <corners android:radius="8dp" />&nbsp; &nbsp;<br /> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; <padding android:left="10dp" android:top="10dp"&nbsp;<br /> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; android:bottom=&ldquo;10dp&rdquo; android:right=&ldquo;10dp&rdquo;/&gt;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;<br /> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; </shape>&nbsp;<br /> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;</item><br /> </selector>&nbsp;<br /> &nbsp; &nbsp;&nbsp;&nbsp;最后，需要在包含 button的xml文件里添加两项。假如是 main.xml 文件，<br /> 我们需要在<Button />里加两项。&nbsp;<br /> &nbsp; &nbsp;&nbsp;&nbsp;android：focusable=&ldquo;true&rdquo;&nbsp;<br /> &nbsp; &nbsp;&nbsp;&nbsp;android:backgroud=&ldquo;@drawable/button_color&rdquo;<br /> 这样当你使用Button的时候就可以甩掉系统自带的那黄颜色的背景了，实现个性化的背景，配合应用的整体布局非常之有用啊。</span></p>
+</div>
+      <hr />
+      <footer class="article-footer">
+        <div class="article-panel-footer article-meta article-footer">
+          <span class="article-meta-left">
+  <ol>
+    
+    <li><a href='//angel.owent.net/categories/android.html'>Android</a></li>
+    
+    <li><a href='//angel.owent.net/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91.html'>编程开发</a></li>
+    
+  </ol>
+</span>
+          <span class="article-meta-right"><time datetime='2014-03-05T08:41:54.000&#43;00:00' itemprop="datePublished">2014-03-05</time></span>
+          <span class="clearfix"></span>
+        </div>
+        
+        
+<div class="article-tags">
+  <ul class="article-tag-list">
+    
+    <li class="article-tag-list-item"><a href='//angel.owent.net/tags/android.html'>Android</a></li>
+    
+  </ul>
+</div>
+
+      </footer>
+    </div>
+    
+<hr />
+<nav id="article-nav">
+  <ul class="pagination">
+  
+    <li class="page-item">
+      <a class="page-link" id="article-nav-newer" class="article-nav-link-wrap" href='//angel.owent.net/2014/04/66%E4%B8%AA%E9%AB%98%E8%B4%A8%E9%87%8F%E7%9A%84java%E5%BC%80%E5%8F%91%E5%8D%9A%E5%AE%A2/'>
+        上一篇<strong>66个高质量的Java开发博客</strong>
+      </a>
+    </li>
+  
+  
+    <li class="page-item">
+      <a class="page-link" id="article-nav-older" class="article-nav-link-wrap" href='//angel.owent.net/2014/03/%E5%80%BC%E5%BE%97%E5%AD%A6%E4%B9%A0%E7%9A%84android%E8%B5%84%E6%BA%90%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/'>
+        下一篇<strong>值得学习的Android资源命名规范</strong>
+      </a>
+    </li>
+  
+  </ul>
+</nav>
+
+    
+<hr />
+<section id="comments">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+var disqus_config = function () {
+
+this.page.identifier = '201411';
+
+};
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://angel-13.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+  </div>
+</article></div>
+</section></div>
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      <strong id="footer-left">
+        &copy; 2018
+        ANGEL
+        
+        
+      </strong>
+      <strong id="footer-right">
+        
+        
+        发布者 <a href="https://gohugo.io/" target="_blank">Hugo</a>,
+        主题 <a href="https://github.com/owt5008137/hugo-theme-distinctionpp" target="_blank">distinctionpp</a>
+      </strong>
+      <span class="clearfix"></span>
+    </div>
+  </div>
+</footer>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js' crossorigin="anonymous"></script>
+  
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.min.js' crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js'></script>
+
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/capnproto.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/cmake.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/d.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/dos.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/erlang.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/less.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/lua.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/php.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/powershell.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/protobuf.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/profile.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/typescript.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/vim.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/rust.min.js'></script>
+<script type="text/javascript">
+jQuery(function (){
+    jQuery("head").append('<link rel="stylesheet" href="\/\/cdnjs.cloudflare.com\/ajax\/libs\/highlight.js\/9.12.0\/styles\/vs2015.min.css" />');
+    if (window.JSON) {
+        hljs.configure(JSON.parse("{\"languages\":{},\"tabreplace\":\"    \",\"usebr\":false}"));
+    } else {
+        hljs.configure(evel("{\"languages\":{},\"tabreplace\":\"    \",\"usebr\":false}"));
+    }
+    jQuery('pre\x3ecode').each(function(i, block) {
+        try {
+            hljs.highlightBlock(block);
+        } catch (e) {
+            if (window.console) {
+                console.log(e.toString() + "\r\nMaybe can not detect the language");
+            }
+        }
+    });
+});
+</script>
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-19298704-3"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-19298704-3');
+</script>
+
+
+
+
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js'></script>
+<script type="text/javascript">
+jQuery(function(){
+    jQuery("head").append('<link rel="stylesheet" href="\/\/cdnjs.cloudflare.com\/ajax\/libs\/KaTeX\/0.9.0\/katex.min.css" />');
+    renderMathInElement(document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "\\[", right: "\\]", display: true},
+            {left: "\\(", right: "\\)", display: false},
+            {left: "`$", right: "$`", display: false}
+        ],
+        ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    });
+});
+</script>
+
+
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js'></script>
+
+
+</div>
+</body></html>

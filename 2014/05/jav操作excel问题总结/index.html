@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  
+  
+  <meta charset="utf-8" />
+  <title>Java操作Excel问题总结|ANGEL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="canonical" href="//angel.owent.net/2014/05/jav%E6%93%8D%E4%BD%9Cexcel%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/">
+  <link href="//angel.owent.net/index.xml" rel="alternate" type="application/rss+xml" title="ANGEL" />
+  
+  <link rel="icon" href='../../../favicon.ico' />
+  
+  
+  <link rel="stylesheet" href='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css' crossorigin="anonymous" />
+  
+  <link rel="stylesheet" href='//angel.owent.net/css/style.css' />
+
+  
+  <script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js' crossorigin="anonymous"></script>
+  
+  
+  
+</head>
+<body><div id="container"><div id="wrap">
+<header id="header">
+  <div id="banner"></div>
+  <div id="header-outer">
+    <div id="header-title">
+      <h1 id="site-title">
+        <a href="//angel.owent.net" id="logo">ANGEL</a>
+      </h1>
+      
+      <h2 id="site-description">Living for the here and now</h2>
+      
+    </div>
+    <div id="header-inner">
+      <nav id="main-nav" class="navbar navbar-expand-md navbar-dark">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#main-nav-links" aria-controls="main-nav-links" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a id="main-nav-brand" class="navbar-brand collapse" href="#">#</a>
+        <div class="collapse navbar-collapse" id="main-nav-links">
+          <ul class="navbar-nav mr-auto">
+            
+              
+                <li class="nav-item"><a class="nav-link" href="../../../" title='Home'>Home</a></li>
+              
+                <li class="nav-item"><a class="nav-link" href="../../../archives.html" title='Archives'>Archives</a></li>
+              
+            
+            <li class="nav-item"><a id="nav-rss-link" class="nav-link" href="//angel.owent.net/index.xml" title='RSS订阅'>RSS订阅</a></li>
+          </ul>
+          
+          <form class="form-inline" method="get" accept-charset="UTF-8" action='//www.bing.com/search'>
+            <input type="hidden" name='q1' value='site:angel.owent.net' />
+            <input class="form-control" type="text" placeholder='搜索' name='q' />
+            <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">搜索</button>
+          </form>
+          
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+<div id="main"><section id="main-content">
+<div id="post-content"><article id="post-a09b13181f3c82ecf8ed63eb3ba33b97" class="article-panel article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-panel-inner article-inner">
+    <div class="article-inner">
+      <header class="article-header"><h1 itemprop="name"><a class='article-title' href="//angel.owent.net/2014/05/jav%E6%93%8D%E4%BD%9Cexcel%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/" target="_blank" itemprop="url">Java操作Excel问题总结</a></h1></header><hr />
+      
+      <div class="article-entry" itemprop="articleBody"><p><span style="color:#0000CD;"><strong><span style="font-size:larger;">1.POI 简介(摘自百度百科)</span></strong></span></p>
+
+<p>Apache POI 是用Java编写的免费开源的跨平台的 Java API，Apache POI提供API给Java程式对Microsoft Office格式档案读和写的功能。POI为&ldquo;Poor Obfuscation Implementation&rdquo;的首字母缩写，意为&ldquo;可怜的模糊实现&rdquo;。</p>
+
+<p>Apache POI 是创建和维护操作各种符合Office Open XML（OOXML）标准和微软的OLE 2复合文档格式（OLE2）的Java API。用它可以使用Java读取和创建,修改MS Excel文件.而且,还可以使用Java读取和创建MS Word和MSPowerPoint文件。Apache POI 提供Java操作Excel解决方案（适用于Excel97-2008）。</p>
+
+<p><span style="color:#0000CD;"><span style="font-size:larger;"><strong>2.POI结构(摘自百度百科)</strong></span></span></p>
+
+<p>HSSF － 提供读写Microsoft Excel XLS格式档案的功能。</p>
+
+<p>XSSF － 提供读写Microsoft Excel OOXML XLSX格式档案的功能。</p>
+
+<p>HWPF － 提供读写Microsoft Word DOC格式档案的功能。</p>
+
+<p>HSLF － 提供读写Microsoft PowerPoint格式档案的功能。</p>
+
+<p>HDGF － 提供读Microsoft Visio格式档案的功能。</p>
+
+<p>HPBF － 提供读Microsoft Publisher格式档案的功能。</p>
+
+<p>HSMF － 提供读Microsoft Outlook格式档案的功能。</p>
+
+<p><span style="color:#0000CD;"><span style="font-size:larger;"><strong>3.一个Sheet对应一个Model</strong></span></span></p>
+
+<p>一份设计良好的Excel文档，每个Sheet对应着对一个任务，一个工作等的一个抽象，这与Java对象的功能不谋而合。所以一份设计良好的Excel文档，一个Sheet对应一个Java的Model。如下面的学成信息表1和迟到记录统计表2都都是做了很好的抽象的类。</p>
+
+<p>良好的Excel文档特征总结：</p>
+
+<ul>
+<li>每个sheet都有自己的名称<br /></li>
+<li>每个sheet的第一行是标题行<br /></li>
+<li>中间不要用空行或者空列<br />
+<br /></li>
+</ul>
+
+<p>e.g.:</p>
+
+<p>学生信息表1</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<table border="0" cellpadding="0" cellspacing="0" style="border-collapse:<br /><br />
+ collapse;width:216pt" width="288">
+  </p> <colgroup> <col span="4" style="width:54pt" width="72" /> </colgroup> <tr height="18" style="height:13.5pt">
+    <td class="xl63" height="18" style="height:13.5pt;width:54pt" width="72">
+      姓名
+    </td>
+    
+    <td class="xl63" style="border-left:none;width:54pt" width="72">
+      班级
+    </td>
+    
+    <td class="xl63" style="border-left:none;width:54pt" width="72">
+      性别
+    </td>
+    
+    <td class="xl63" style="border-left:none;width:54pt" width="72">
+      年龄
+    </td>
+  </tr>
+  
+  <tr height="18" style="height:13.5pt">
+    <td class="xl64" height="18" style="height:13.5pt;border-top:none">
+      小红
+    </td>
+    
+    <td class="xl64" style="border-top:none;border-left:none">
+      一班
+    </td>
+    
+    <td class="xl64" style="border-top:none;border-left:none">
+      女
+    </td>
+    
+    <td align="right" class="xl64" style="border-top:none;border-left:none">
+      12
+    </td>
+  </tr>
+  
+  <tr height="18" style="height:13.5pt">
+    <td class="xl64" height="18" style="height:13.5pt;border-top:none">
+      小宝
+    </td>
+    
+    <td class="xl64" style="border-top:none;border-left:none">
+      二班
+    </td>
+    
+    <td class="xl64" style="border-top:none;border-left:none">
+      女
+    </td>
+    
+    <td align="right" class="xl64" style="border-top:none;border-left:none">
+      11
+    </td>
+  </tr>
+  
+  <tr height="18" style="height:13.5pt">
+    <td class="xl64" height="18" style="height:13.5pt;border-top:none">
+      小白
+    </td>
+    
+    <td class="xl64" style="border-top:none;border-left:none">
+      三班
+    </td>
+    
+    <td class="xl64" style="border-top:none;border-left:none">
+      女
+    </td>
+    
+    <td align="right" class="xl64" style="border-top:none;border-left:none">
+      10
+    </td>
+  </tr>
+  
+  <tr height="18" style="height:13.5pt">
+    <td class="xl64" height="18" style="height:13.5pt;border-top:none">
+      小黑
+    </td>
+    
+    <td class="xl64" style="border-top:none;border-left:none">
+      二班
+    </td>
+    
+    <td class="xl64" style="border-top:none;border-left:none">
+      女
+    </td>
+    
+    <td align="right" class="xl64" style="border-top:none;border-left:none">
+      11
+    </td>
+  </tr>
+</table>
+
+<p>迟到记录表2</p>
+
+<table border="0" cellpadding="0" cellspacing="0" style="width:335px;" width="335">
+  <colgroup> <col /> <col /> <col /> <col /> </colgroup> <tr height="18">
+    <td height="18" style="height:18px;width:84px;">
+      日期
+    </td>
+    
+    <td style="width:72px;">
+      姓名
+    </td>
+    
+    <td style="width:79px;">
+      是否迟到
+    </td>
+    
+    <td style="width:100px;">
+      迟到原因
+    </td>
+  </tr>
+  
+  <tr height="18">
+    <td align="right" height="18" style="height:18px;">
+      2014/5/29
+    </td>
+    
+    <td>
+      小红
+    </td>
+    
+    <td>
+      否
+    </td>
+    
+    <td>
+      　
+    </td>
+  </tr>
+  
+  <tr height="18">
+    <td align="right" height="18" style="height:18px;">
+      2014/5/29
+    </td>
+    
+    <td>
+      小黑
+    </td>
+    
+    <td>
+      否
+    </td>
+    
+    <td>
+      　
+    </td>
+  </tr>
+  
+  <tr height="18">
+    <td align="right" height="18" style="height:18px;">
+      2014/5/29
+    </td>
+    
+    <td>
+      小宝
+    </td>
+    
+    <td>
+      否
+    </td>
+    
+    <td>
+      　
+    </td>
+  </tr>
+  
+  <tr height="18">
+    <td align="right" height="18" style="height:18px;">
+      2014/5/29
+    </td>
+    
+    <td>
+      小白
+    </td>
+    
+    <td>
+      否
+    </td>
+    
+    <td>
+      　
+    </td>
+  </tr>
+</table>
+
+<p>&nbsp;代码块1</p>
+
+<pre class="brush:java;">public class Student {
+ private String name;
+ private String classInfo;
+ get...set
+}</pre>
+
+<p>代码块2</p>
+
+<pre class="brush:java;">public class LaterRecode {
+    private String Date;
+    private String stuName;
+    
+    get...set
+}</pre>
+
+<p><span style="color:#0000CD;"><span style="font-size:larger;"><strong>4.ExcelReader/ExcelWr</strong></span><strong>iter/ExcelCheck/ExcelRemark</strong></span></p>
+
+<p>读取一个Excel到XSSFWorkbook实例中之后，对其进行注解，更改之后，想要把修改的内容保存下来，就需要把<span style="font-size: 13px;">XSSFWorkbook在重新按原路径写回去，这叫保存，写到一个新的路径中，这叫另存为。</span></p>
+
+<p><strong style="color: rgb(0, 0, 205); font-size: 16px;">ExcelReader: 打开一个Excel文件，并将其保存在一个</strong><span style="font-size: 13px;">Workbook实例中,<em>.xlsx 文件保存在XSSFWorkbook的实例中，</em>.xls的文件，保存在HSSFWorkbook的实例中。这个实例暂且叫名字</span><span style="font-size: 13px; color: rgb(255, 0, 0);">myBook</span><span style="font-size: 13px;">。</span></p>
+
+<ul>
+<li><span style="color:#FF0000;">myBook</span>最好是一个全局的，因为要对Excel做的任何操作都得和<span style="color:#FF0000;">myBook</span>挂钩，比如新建一个单元格格式，CellStyle cellstyle = <span style="color:#FF0000;">myBook</span>.createCellStyle();<br /></li>
+<li><span style="color:#FF0000;">myBook</span>最好是静态的，因为静态的才可以把所有的操作保存下来<br /></li>
+<li>在应用退出之前，记得用<strong style="color: rgb(0, 0, 205); font-size: 16px;">ExcelWriter</strong>把<span style="color:#FF0000;">myBook</span>写到磁盘上<br />
+<br /></li>
+</ul>
+
+<p><strong style="color: rgb(0, 0, 205); font-size: 13px;">ExcelCheck</strong><span style="font-size: 13px;">的作用是对Excel做格式校验</span></p>
+
+<p><strong style="color: rgb(0, 0, 205); font-size: 13px;">ExcelRemark</strong><span style="font-size: 13px;">是对Excel做格式更改，比如修改用底色标注单元格，添加批注等<br /> <span style="color:#0000CD;"><span style="font-size:larger;"><strong>5.息息相关的Workbook</strong></span></span><br /> Excel的操作中，出了Row，Cell是和Sheet相关的，其他的批注，样式等，都只能通过workbook的</span>CreationHelper<span style="font-size: 13px;">产生，与workbook关联。<br /> e.g.：对Excel的单元格添加一个new出来的CellStyle时就会跑出异常，下面的代码创建的CellStyle则可以随意的添加到此workbook对应的任意单元格上</span></p>
+
+<pre class="brush:php;">public static CellStyle cellstyle = null;
+public static CreationHelper helper = null;
+public static XSSFSheet currentSheet = null;
+    
+public static void initStatic(XSSFWorkbook workbook)
+{
+    helper = workbook.getCreationHelper();
+    cellstyle = workbook.createCellStyle();
+    cellstyle.setFillPattern(XSSFCellStyle.BORDER_THIN);
+    cellstyle.setFillForegroundColor(IndexedColors.PINK.getIndex());
+}</pre>
+
+<p><strong><span style="color:#0000CD;"><span style="font-size:larger;">6.一些注意点</span></span></strong></p>
+
+<ul>
+<li>Excel的空格和空行，Excel中看着空的空行不一定是空的，Excel看着空的单元格也不一定是空的。所以通过sheet.getLastRowNum()是没法判定Excel内容的结尾的。<br />
+<br /></li>
+</ul>
+
+<pre class="brush:java;">int firstRowNumber = sheet.getFirstRowNum();
+for(int i = firstRowNumber+1;;i++)
+{
+    row = sheet.getRow(i);
+    if(row == null || row.getCell(0) == null) //到最后一行了
+    {
+    }
+}
+</pre>
+
+<ul>
+<li>Excel单元格内容的读取与Excel编辑的时候单元格属性的设置息息相关，比如在一个Cell中输入100，但是将属性设置为了文本，用cell.getNumericCellValue()读取的时候就会报错<br /></li>
+</ul>
+</div>
+      <hr />
+      <footer class="article-footer">
+        <div class="article-panel-footer article-meta article-footer">
+          <span class="article-meta-left">
+  <ol>
+    
+    <li><a href='//angel.owent.net/categories/%E4%B8%AA%E4%BA%BA%E5%8E%9F%E5%88%9B.html'>个人原创</a></li>
+    
+    <li><a href='//angel.owent.net/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91.html'>编程开发</a></li>
+    
+  </ol>
+</span>
+          <span class="article-meta-right"><time datetime='2014-05-29T09:04:17.000&#43;00:00' itemprop="datePublished">2014-05-29</time></span>
+          <span class="clearfix"></span>
+        </div>
+        
+        
+      </footer>
+    </div>
+    
+<hr />
+<nav id="article-nav">
+  <ul class="pagination">
+  
+    <li class="page-item">
+      <a class="page-link" id="article-nav-newer" class="article-nav-link-wrap" href='//angel.owent.net/2014/06/mac%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E6%A0%87%E7%A4%BA%E7%AC%A6/'>
+        上一篇<strong>Mac常用快捷标示符</strong>
+      </a>
+    </li>
+  
+  
+    <li class="page-item">
+      <a class="page-link" id="article-nav-older" class="article-nav-link-wrap" href='//angel.owent.net/2014/05/java%E6%89%93jar%E5%8C%85/'>
+        下一篇<strong>Java打Jar包</strong>
+      </a>
+    </li>
+  
+  </ul>
+</nav>
+
+    
+<hr />
+<section id="comments">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+var disqus_config = function () {
+
+this.page.identifier = '201421';
+
+};
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://angel-13.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+  </div>
+</article></div>
+</section></div>
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      <strong id="footer-left">
+        &copy; 2018
+        ANGEL
+        
+        
+      </strong>
+      <strong id="footer-right">
+        
+        
+        发布者 <a href="https://gohugo.io/" target="_blank">Hugo</a>,
+        主题 <a href="https://github.com/owt5008137/hugo-theme-distinctionpp" target="_blank">distinctionpp</a>
+      </strong>
+      <span class="clearfix"></span>
+    </div>
+  </div>
+</footer>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js' crossorigin="anonymous"></script>
+  
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.min.js' crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js'></script>
+
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/capnproto.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/cmake.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/d.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/dos.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/erlang.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/less.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/lua.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/php.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/powershell.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/protobuf.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/profile.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/typescript.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/vim.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/rust.min.js'></script>
+<script type="text/javascript">
+jQuery(function (){
+    jQuery("head").append('<link rel="stylesheet" href="\/\/cdnjs.cloudflare.com\/ajax\/libs\/highlight.js\/9.12.0\/styles\/vs2015.min.css" />');
+    if (window.JSON) {
+        hljs.configure(JSON.parse("{\"languages\":{},\"tabreplace\":\"    \",\"usebr\":false}"));
+    } else {
+        hljs.configure(evel("{\"languages\":{},\"tabreplace\":\"    \",\"usebr\":false}"));
+    }
+    jQuery('pre\x3ecode').each(function(i, block) {
+        try {
+            hljs.highlightBlock(block);
+        } catch (e) {
+            if (window.console) {
+                console.log(e.toString() + "\r\nMaybe can not detect the language");
+            }
+        }
+    });
+});
+</script>
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-19298704-3"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-19298704-3');
+</script>
+
+
+
+
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js'></script>
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js'></script>
+<script type="text/javascript">
+jQuery(function(){
+    jQuery("head").append('<link rel="stylesheet" href="\/\/cdnjs.cloudflare.com\/ajax\/libs\/KaTeX\/0.9.0\/katex.min.css" />');
+    renderMathInElement(document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "\\[", right: "\\]", display: true},
+            {left: "\\(", right: "\\)", display: false},
+            {left: "`$", right: "$`", display: false}
+        ],
+        ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    });
+});
+</script>
+
+
+<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js'></script>
+
+
+</div>
+</body></html>
